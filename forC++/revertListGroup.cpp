@@ -56,13 +56,16 @@ public:
     ListNode *reverseKGroup(ListNode *head, int k)
     {
         ListNode *prev;
+        ListNode *curr;
         prev->next=head;
         while (head!=nullptr)
         {
             for (int i = 0; i < k; i++)
             {
-                
+                head=head->next;
             }
+            curr=head->next;
+            head->next=nullptr;
             
         }
     }
