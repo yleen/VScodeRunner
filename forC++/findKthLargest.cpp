@@ -57,7 +57,7 @@ public:
             }
         }
 
-        if (nums[right] < cur_val) right++;
+        if (nums[right] < cur_val) right++;//特殊情况，当标志值比其他都大时  可能会产生left一直移动到right  第二个while没有执行，此时right指向的值还是小于标志值的。 
         swap(nums[right], nums[end]);
         p = right;
 
