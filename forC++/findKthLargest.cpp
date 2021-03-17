@@ -18,57 +18,152 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 #include <vector>
+#include <iostream>
+#include <stdlib.h>
+#include<time.h>
 using namespace std;
-
+// 快排思想 快速选择
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
-        int i=1;
-        int j=sizeof(nums)-1;
-        int m=0;
+        int n = nums.size();
+        int start = 0;
+        int end = n-1;
+        srand(time(NULL));
+        return findFunction(nums, n-k, start, end);
+        
+    }
 
-        while (m!=k)
+    int findFunction(vector<int>& nums, int k, int start, int end){
+        int p = rand() % (end - start + 1) + start;//使用随机索引可以将期望降低到O(n)
+        swap(nums[p], nums[end]);
+        p = end;
+        int cur_val = nums[p];
+        int left = start, right =end - 1;
+        
+        if (start == end && start == k) {return nums[start];}
+
+        while(left < right){
+            while(left < right && nums[left] < cur_val){
+                left ++;
+            }
+
+            while(left< right && nums[right] >= cur_val){
+                right--;
+            }
+
+            if(left < right){
+                swap(nums[left], nums[right]);
+            }
+        }
+
+        if (nums[right] < cur_val) right++;
+        swap(nums[right], nums[end]);
+        p = right;
+
+        if(p == k){
+            return nums[p];
+        }
+
+        return p < k ? findFunction(nums, k, right+1, end): findFunction(nums, k, start, right-1);
+    }
+
+};
+
+
+//堆排序 法一：大根堆
+//该方法思路为 先进行堆排序，然后将排序过的顶点一个个删除  直到k为止
+
+class Solution2 {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        int heapsize=nums.size();
+        buildMaxHeap(nums,heapsize);
+
+        for (int i = nums.size()-1; i >= nums.size()-k+1; i--)
         {
-            if(m<k)
-                m=quickSort(nums,m,j);
-            else if(m>k)
-                m=quickSort(nums,i,m);
-
+            swap(nums[0],nums[i]);
+            --heapsize;
+            maxHeapify(nums,i,heapsize);
         }
         
-        return nums[k];
+
+        return nums[0];
     }
-    int quickSort(vector<int>& nums,int i, int j){
-        int curr=nums[0];
-        while (i<j)
+
+
+
+    void buildMaxHeap(vector<int>& nums,int heapsize){
+        int length=nums.size();
+        for (int i = length/2; i >=0; i--)
         {
-            while(nums[i]<curr)
-                i++;
-            while(nums[j]>=curr)
-                j--;
-            swap(&nums[i],&nums[j]);
+            maxHeapify(nums,i,heapsize);
         }
-        nums[i]=curr;
-        return i;
-    }
-    
-
-
-    void swap(int *a,int *b){
-        int tmp=*a;
-        *a=*b;
-        *b=tmp;
+        
     }
 
-    void main(){
-        vector<int> num;
-        num.push_back(3);
-        num.push_back(2);
-        num.push_back(1);
-        num.push_back(5);
-        num.push_back(6);
-        num.push_back(4);
-        int res=findKthLargest(num,2);
+    void maxHeapify(vector<int>& nums,int i,int heapsize){
+        int left=i*2+1;
+        int right=i*2+2;
+        int curr=i;
+        if(left<heapsize&&nums[left]>nums[i]){
+            curr=left;       //要注意一点 当这里执行后  curr已经是left了  下面的比较其实是两个子节点值的比较
+        }
+        if(right<heapsize&&nums[right]>nums[i]){
+            curr=right;
+        }
+
+        if(curr!=i){
+            swap(nums[curr],nums[i]);
+            maxHeapify(nums,curr,heapsize);
+        }
+    }
+};
+
+//堆排序  法二
+//使用小根堆 建立k个节点的小根堆，然后依次加入剩余的数组值，遍历完毕后顶点为第k大的数
+class Solution {
+   public:
+    int findKthLargest(vector<int>& nums, int k) {
+        // 对前k个元素建成小根堆
+        for (int i = 0; i < k; i++) {
+            swim(nums, i);
+        }
+        // 剩下的元素与堆顶比较，若大于堆顶则去掉堆顶，再将其插入
+        for (int i = k; i < nums.size(); i++) {
+            if (nums[i] > nums[0]) {
+                swap(nums[0], nums[i]);
+                sink(nums, 0, k - 1);
+            }
+        }
+        // 结束后第k个大的数就是小根堆的堆顶
+        return nums[0];
     }
 
+   private:
+    // 若v1比v2优先度高，返回true
+    bool priorityThan(int v1, int v2) { return v1 < v2; }
+
+    // 上浮 从下到上调整堆
+    void swim(vector<int>& heap, int i) {
+        while (i > 0 && priorityThan(heap[i], heap[(i - 1) / 2])) {
+            swap(heap[i], heap[(i - 1) / 2]);
+            i = (i - 1) / 2;
+        }
+    }
+
+    // 下沉 从下到上调整堆
+    void sink(vector<int>& heap, int i, int N) {
+        while (2 * i + 1 <= N) {
+            int j = 2 * i + 1;
+            if (j < N && priorityThan(heap[j + 1], heap[j])) {
+                j++;
+            }
+            if (priorityThan(heap[i], heap[j])) {
+                break;
+            }
+            swap(heap[i], heap[j]);
+            i = j;
+        }
+    }
 };
