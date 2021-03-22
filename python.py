@@ -29,3 +29,10 @@ class Solution2:
         head.next=None
 
         return newhead  
+
+def endString(string s):
+    index=0
+    for i=0; i<s.length;i++:
+        if s[i]==" ":
+            index=i+1
+    return s.length-index
