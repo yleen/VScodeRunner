@@ -35,15 +35,19 @@ public:
         head->next = reverseBetween(head->next,left-1,right-1);
         return head;
     }
-    ListNode *currListNode=nullptr;
+    ListNode *successor =nullptr;
+    // 反转以 head 为起点的 n 个节点，返回新的头结点
     ListNode *revertList(ListNode *head,int index){
         if(index==1){//
-            currListNode=head->next;//
+            // 记录第 n + 1 个节点
+            successor =head->next;//
             return head;//
         }
+        // 以 head.next 为起点，需要反转前 n - 1 个节点
         ListNode *listNode=revertList(head->next,index-1);
         head->next->next=head;
-        head->next=currListNode;
+        // 让反转之后的 head 节点和后面的节点连起来
+        head->next=successor;
         return listNode;//
     }
 };
