@@ -36,7 +36,7 @@ public:
 
     int findFunction(vector<int>& nums, int k, int start, int end){
         int p = rand() % (end - start + 1) + start;//使用随机索引可以将期望降低到O(n)
-        swap(nums[p], nums[end]);
+        swap(nums[p], nums[end]); //这里其实是  end指向的值是比标志位大 但不一定就是最终位置 所以每次需要将他回归到待排数列中  此时标志位位于end位置
         p = end;
         int cur_val = nums[p];
         int left = start, right =end - 1;
@@ -57,8 +57,8 @@ public:
             }
         }
 
-        if (nums[right] < cur_val) right++;//特殊情况，当标志值比其他都大时  可能会产生left一直移动到right  第二个while没有执行，此时right指向的值还是小于标志值的。 
-        swap(nums[right], nums[end]);
+        if (nums[right] < cur_val) right++;//特殊情况，当标志值比其他都大时  可能会产生left一直移动到right  第二个while没有执行，此时right指向的值还是小于标志值的。 而且这种情况left>right 需要++
+        swap(nums[right], nums[end]);  //这一步是把标志位从end回归到排序后确定的位置
         p = right;
 
         if(p == k){
