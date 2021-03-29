@@ -106,10 +106,10 @@ public:
         int left=i*2+1;
         int right=i*2+2;
         int curr=i;
-        if(left<heapsize&&nums[left]>nums[i]){
+        if(left<heapsize&&nums[left]>nums[curr]){
             curr=left;       //要注意一点 当这里执行后  curr已经是left了  下面的比较其实是两个子节点值的比较
         }
-        if(right<heapsize&&nums[right]>nums[i]){
+        if(right<heapsize&&nums[right]>nums[curr]){
             curr=right;
         }
 
