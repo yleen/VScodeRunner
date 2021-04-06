@@ -17,6 +17,8 @@
         "sstream": "cpp",
         "streambuf": "cpp",
         "tuple": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp"
     }
 }

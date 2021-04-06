@@ -30,7 +30,7 @@ public:
         int start = 0;
         int end = n-1;
         srand(time(NULL));
-        return findFunction(nums, n-k, start, end);
+        return findFunction(nums, n-k, start, end);//****注意是n-k
         
     }
 
@@ -41,14 +41,14 @@ public:
         int cur_val = nums[p];
         int left = start, right =end - 1;
         
-        if (start == end && start == k) {return nums[start];}
+        if (start == end && start == k) {return nums[start];}//*****注意别丢了
 
         while(left < right){
             while(left < right && nums[left] < cur_val){
                 left ++;
             }
 
-            while(left< right && nums[right] >= cur_val){
+            while(left< right && nums[right] >= cur_val){//*****注意大于等于
                 right--;
             }
 
@@ -56,16 +56,12 @@ public:
                 swap(nums[left], nums[right]);
             }
         }
-
-        if (nums[right] < cur_val) right++;//特殊情况，当标志值比其他都大时  可能会产生left一直移动到right  第二个while没有执行，此时right指向的值还是小于标志值的。 而且这种情况left>right 需要++
-        swap(nums[right], nums[end]);  //这一步是把标志位从end回归到排序后确定的位置
-        p = right;
-
-        if(p == k){
+        if(nums[right]<cur_val) left=end;//特殊情况，当标志值比其他都大时  可能会产生left一直移动到right  第二个while没有执行，此时right指向的值还是小于标志值的。 此时将left设到end
+        swap(nums[p],nums[left]); //这一步是把标志位从end回归到排序后确定的位置
+        p=left;
+        if(p==k)
             return nums[p];
-        }
-
-        return p < k ? findFunction(nums, k, right+1, end): findFunction(nums, k, start, right-1);
+        return p>k?findFunction(nums,start,left-1,k):findFunction(nums,left+1,end,k);
     }
 
 };
@@ -84,7 +80,7 @@ public:
         {
             swap(nums[0],nums[i]);
             --heapsize;
-            maxHeapify(nums,i,heapsize);
+            SiftDownRecursive(nums,0,heapsize);
         }
         
 
@@ -97,12 +93,19 @@ public:
         int length=nums.size();
         for (int i = length/2; i >=0; i--)
         {
-            maxHeapify(nums,i,heapsize);
+            SiftDownRecursive(nums,i,heapsize);
         }
         
     }
-
-    void maxHeapify(vector<int>& nums,int i,int heapsize){
+    /*
+[4:27 PM] Zhongyuan Li
+    而且你这个函数的命名，假如真的是SiftDown操作的话
+​[4:27 PM] Zhongyuan Li
+    可以命名成SiftDownRecur或者SiftDownRecursive
+​[4:27 PM] Zhongyuan Li
+    这样，你看到Recur，就知道发生递归了。逻辑上也就清楚哪些是终止条件，哪些是递归体
+*/
+    void SiftDownRecursive(vector<int>& nums,int i,int heapsize){//
         int left=i*2+1;
         int right=i*2+2;
         int curr=i;
@@ -115,7 +118,7 @@ public:
 
         if(curr!=i){
             swap(nums[curr],nums[i]);
-            maxHeapify(nums,curr,heapsize);
+            SiftDownRecursive(nums,curr,heapsize);
         }
     }
 };
@@ -127,13 +130,13 @@ class Solution {
     int findKthLargest(vector<int>& nums, int k) {
         // 对前k个元素建成小根堆
         for (int i = 0; i < k; i++) {
-            swim(nums, i);
+            siftUp(nums, i);
         }
         // 剩下的元素与堆顶比较，若大于堆顶则去掉堆顶，再将其插入
         for (int i = k; i < nums.size(); i++) {
             if (nums[i] > nums[0]) {
                 swap(nums[0], nums[i]);
-                sink(nums, 0, k - 1);
+                siftDown(nums, 0, k - 1);
             }
         }
         // 结束后第k个大的数就是小根堆的堆顶
@@ -145,15 +148,15 @@ class Solution {
     bool priorityThan(int v1, int v2) { return v1 < v2; }
 
     // 上浮 从下到上调整堆
-    void swim(vector<int>& heap, int i) {
+    void siftUp(vector<int>& heap, int i) {
         while (i > 0 && priorityThan(heap[i], heap[(i - 1) / 2])) {
             swap(heap[i], heap[(i - 1) / 2]);
             i = (i - 1) / 2;
         }
     }
 
-    // 下沉 从下到上调整堆
-    void sink(vector<int>& heap, int i, int N) {
+    // 下沉 从上到下调整堆
+    void siftDown(vector<int>& heap, int i, int N) {
         while (2 * i + 1 <= N) {
             int j = 2 * i + 1;
             if (j < N && priorityThan(heap[j + 1], heap[j])) {

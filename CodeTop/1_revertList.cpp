@@ -40,7 +40,7 @@ public:
     {
         if (head == nullptr || head->next == nullptr)
             return head;
-        ListNode *curr = head;
+        ListNode *curr = head;//用curr代替head是为了不破坏原链表结构
         ListNode *prev = nullptr;
         while (curr != nullptr)
         {
