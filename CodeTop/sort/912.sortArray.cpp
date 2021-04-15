@@ -65,6 +65,56 @@ public:
         }
         
     }
+    //快速排序
+        void quickSort(vector<int>& nums,int start,int end){
+        if(start>=end){
+            return;
+        }
+        int pivor=rand() % (end - start + 1) + start;
+        swap(nums[pivor],nums[end]);
+        pivor=end;
+        int left=start;
+        int right=end;
+        int curr_val=nums[pivor];
+        while(left<right){
+            while(left<right&&nums[left]<curr_val)left++;
+            nums[right]=nums[left];
+            while(left<right&&nums[right]>=curr_val) right--;
+            nums[left]=nums[right];
+        }
+
+        nums[left]=curr_val;
+        pivor=left;
+        quickSort(nums,start,pivor-1);
+        quickSort(nums,pivor+1,end);
+    }
+    //归并排序
+    vector<int> tmp;
+    void mergeSort(vector<int>& nums, int l, int r) {
+        if (l >= r) return;
+        int mid = (l + r) >> 1;
+        mergeSort(nums, l, mid);
+        mergeSort(nums, mid + 1, r);
+        int i = l, j = mid + 1;
+        int cnt = 0;
+        while (i <= mid && j <= r) {
+            if (nums[i] <= nums[j]) {
+                tmp[cnt++] = nums[i++];
+            }
+            else {
+                tmp[cnt++] = nums[j++];
+            }
+        }
+        while (i <= mid) {
+            tmp[cnt++] = nums[i++];
+        }
+        while (j <= r) {
+            tmp[cnt++] = nums[j++];
+        }
+        for (int i = 0; i < r - l + 1; ++i) {
+            nums[i + l] = tmp[i];
+        }
+    }
 
     //堆排序
     void heapSort(vector<int> &nums){

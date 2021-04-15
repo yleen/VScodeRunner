@@ -5,6 +5,10 @@
  */
 
 // @lc code=start
+#include<vector>
+#include <algorithm>//sort
+using namespace std;
+
 class Solution {
     vector<int> vis;
 public:

@@ -12,17 +12,6 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-/**
- * 反转链表
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 struct ListNode
 {
     int val;
@@ -57,11 +46,11 @@ public:
 class Solution
 {
 public:
-    ListNode *reverseList(ListNode *head)
+    ListNode *reverseListRecur(ListNode *head)
     {
         if (head == nullptr || head->next == nullptr)
             return head;
-        ListNode* newhead=reverseList(head->next);
+        ListNode* newhead=reverseListRecur(head->next);
         head->next->next=head;
         head->next=nullptr;
         return newhead;

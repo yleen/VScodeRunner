@@ -1,5 +1,5 @@
 /*
-    后序遍历
+    二叉树后序遍历
 */
  struct TreeNode {
       int val;
@@ -13,6 +13,7 @@
 
 #include<vector>
 #include<stack>
+#include <algorithm>//reverse
 using namespace std;
 
 //迭代 TOStudy

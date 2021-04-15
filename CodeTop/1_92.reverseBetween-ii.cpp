@@ -52,3 +52,35 @@ public:
     }
 };
 // @lc code=end
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        ListNode* Hair=new ListNode(-1);
+        Hair->next=head;
+
+        ListNode* start=Hair;
+        for(int i=0;i<left-1;i++){
+            start=start->next;
+        }
+        ListNode* end=start->next;
+        for(int j=left;j<=right;j++){
+            end=end->next;
+        }
+        ListNode* newList=reverseList(start->next,end);
+        start->next=newList;
+        return Hair->next;
+    }
+
+    ListNode* reverseList(ListNode* start,ListNode* end){
+        ListNode* prev=end;
+        ListNode* curr=start;
+
+        while(curr!=end){
+            ListNode* next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
+};
