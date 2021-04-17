@@ -171,7 +171,7 @@ public:
             if (nums[i] > nums[0])
             {
                 swap(nums[0], nums[i]);
-                siftDown(nums, 0, k - 1);
+                siftDown(nums, 0, k);
             }
         }
         // 结束后第k个大的数就是小根堆的堆顶
@@ -195,7 +195,7 @@ private:
     // 下沉 从上到下调整堆
     void siftDown(vector<int> &heap, int i, int N)
     {
-        while (2 * i + 1 <= N)
+        while (2 * i + 1 < N)
         {
             int j = 2 * i + 1;
             if (j < N && priorityThan(heap[j + 1], heap[j]))

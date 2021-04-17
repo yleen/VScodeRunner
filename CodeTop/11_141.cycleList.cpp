@@ -13,13 +13,15 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+#define NULL
 struct ListNode
 {
     int val;
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
 };
-
+#include<unordered_set>
+using namespace std;
 //法一 快慢指针
 class Solution
 {
