@@ -95,7 +95,7 @@ public:
 
 
      pair<ListNode*, ListNode*> revertList(ListNode* first,ListNode* end){
-        ListNode* prev=end->next;
+        ListNode* prev=end->next;//注意此处
         ListNode* curr=first;
         while(prev!=end){
             ListNode* next=curr->next;
