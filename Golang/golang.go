@@ -1,8 +1,8 @@
 /**
  * Definition for singly-linked list.
  */
-package C
 
+package  main                                                                                                                            
 type ListNode struct {
 	Val  int
 	Next *ListNode
