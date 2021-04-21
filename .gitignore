@@ -4,3 +4,5 @@
 # 忽略test文件
 test.*
 *.test
+#忽略指定文件
+.DS_Store

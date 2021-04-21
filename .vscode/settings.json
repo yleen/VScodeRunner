@@ -19,6 +19,7 @@
         "tuple": "cpp",
         "algorithm": "cpp",
         "initializer_list": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "queue": "cpp"
     }
 }
