@@ -13,9 +13,9 @@ ECHO Goodbay!
 GOTO END
 
 :TWO
-set /p "m=please input the commit message:"
+set /p m=please input the commit message:
 
-if (%m%)==() (
+if ("%m%")==() (
     echo DO NOT PUSH NULL!!!
     goto TWO
 ) else (
@@ -32,7 +32,7 @@ F：
 cd F:\PrCode\C
 git config --global credential.helper store
 git add .
-git commit -m %m%
+git commit -m "%m%"
 git push
 
 :END
