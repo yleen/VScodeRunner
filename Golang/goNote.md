@@ -513,6 +513,147 @@ type Person interface {
 
 此时若worker没有实现全部的方法则会报错`*Worker does not implement Person (missing getName method)`
 
+实例可以强制类型转换为接口，接口也可以强制类型转换为实例
+
+```GO
+	var p Person = &Student{
+		name: "Tom",
+	}
+	stu := p.(*Student)
+	fmt.Println(stu.getName())
+```
+
+**空接口**
+
+```GO
+	m := make(map[string]interface{})
+	m["name"] = "Tom"
+	m["age"] = 18
+	m["scores"] = []int{60, 75, 55, 102, 110}
+	fmt.Println(m)//map[age:18 name:Tom scores:[60 75 55 102 110]]
+```
+
+# 并发编程
+
+Go 语言提供了 sync 和 channel 两种方式支持协程(goroutine)的并发.
+
+## sync
+
+例如我们希望并发下载 N 个资源，多个并发协程之间不需要通信，那么就可以使用 sync.WaitGroup，等待所有并发协程执行结束。
+
+```GO
+func main() {
+	for i := 0; i < 3; i++ {
+		wg.Add(1)
+		go download("www.abc.com/" + string(i+'0'))
+	}
+	wg.Wait()
+	fmt.Println("Done!")
+}
+
+var wg sync.WaitGroup
+
+func download(url string) {
+	fmt.Println("start to download", url)
+	time.Sleep(time.Second)
+	wg.Done()
+}
+```
+
+- wg.Add(1)：为 wg 添加一个计数，wg.Done()，减去一个计数。
+- go download()：启动新的协程并发执行 download 函数。
+- wg.Wait()：等待所有的协程执行结束。
+
+输出
+
+`start to download www.abc.com/2
+start to download www.abc.com/1
+start to download www.abc.com/0
+Done!`
+
+串行需要 3s 的下载操作，并发后，只需要 1s。
+
+## channel
+
+使用 channel 信道，可以在协程之间传递消息。阻塞等待并发协程返回消息。
+
+```go
+func main() {
+	for i := 0; i < 3; i++ {
+		go download("www.abc.com")
+	}
+	for i := 0; i < 3; i++ {
+		msg := <-ch
+		fmt.Println("Finish:", msg)
+	}
+	fmt.Println("Done!")
+}
+
+var ch = make(chan string, 10) //创建大小为10的缓冲信道
+func download(url string) {
+	fmt.Println("start to download", url)
+	time.Sleep(time.Second)
+	ch <- url
+}
+```
+
+输出
+
+`start to download www.abc.com
+start to download www.abc.com
+start to download www.abc.com
+Finish: www.abc.com
+Finish: www.abc.com
+Finish: www.abc.com
+Done!`
+
+# 单元测试(unit test)
+
+假设我们希望测试 package main 下 `calc.go` 中的函数，要只需要新建 `calc_test.go` 文件，在`calc_test.go`中新建测试用例即可。
+
+```
+// calc.go
+package main
+
+func add(num1 int, num2 int) int {
+	return num1 + num2
+}
+// calc_test.go
+package main
+
+import "testing"
+
+func TestAdd(t *testing.T) {
+	if ans := add(1, 2); ans != 3 {
+		t.Error("add(1, 2) should be equal to 3")
+	}
+}
+```
+
+运行 `go test`，将自动运行当前 package 下的所有测试用例，如果需要查看详细的信息，可以添加`-v`参数。
+
+```
+$ go test -v
+=== RUN   TestAdd
+--- PASS: TestAdd (0.00s)
+PASS
+ok      example 0.040s
+```
+
+# 一些技巧
+
+1. 对包名进行重新设置
+
+```GO
+package main
+
+import fm "fmt" 
+
+func main() {
+   fm.Println("hello, world")
+}
+```
+
 # debug
 
 ## VSCode: Could not import Golang package
@@ -904,3 +1045,9 @@ is = obj       //IReader因为和IStream有相同的接口定义，因此可以�
 ```
 
 references:https://zhuanlan.zhihu.com/p/30543250
+
+# Go Proverbs
+
+## Simple, Poetic, Pithy
+
+https://go-proverbs.github.io/
