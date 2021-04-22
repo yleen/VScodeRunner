@@ -4,5 +4,5 @@ F：
 cd F:\PrCode\C
 git config --global credential.helper store
 git add .
-git commit -m msg
+git commit -m %msg
 git push
