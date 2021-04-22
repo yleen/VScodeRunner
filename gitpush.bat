@@ -13,7 +13,7 @@ ECHO Goodbay!
 GOTO END
 
 :TWO
-set /p m=please input the commit message:
+set /p "m=please input the commit message:"
 
 if (%m%)==() (
     echo DO NOT PUSH NULL!!!
