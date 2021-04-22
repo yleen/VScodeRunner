@@ -24,7 +24,7 @@ if ("%m%")==() (
 GOTO BEGIN
 
 :ONE
-set m=":pencil: day ex"
+set "m=:pencil: day ex"
 GOTO GITPUSH
 
 :GITPUSH
