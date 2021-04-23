@@ -15,4 +15,6 @@ func main() {
 	fmt.Println("please enter your full name:")
 	fmt.Scanln(&firstName, &lastName)
 	fmt.Printf("Hi %s %s!", firstName, lastName)
+	fmt.Sscanf(input, format, &f, &i, &s)
+	fmt.Println("From the string we read ", f, i, s)
 }
