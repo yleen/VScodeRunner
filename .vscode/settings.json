@@ -20,6 +20,7 @@
         "algorithm": "cpp",
         "initializer_list": "cpp",
         "utility": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "type_traits": "cpp"
     }
 }
