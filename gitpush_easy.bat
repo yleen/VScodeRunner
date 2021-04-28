@@ -5,8 +5,8 @@ if (%m%)==() (
     echo OK
 ) else (
     echo ERROR
+    goto END
 )
-goto END
 F：
 cd F:\PrCode\C
 git config --global credential.helper store
