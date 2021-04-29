@@ -1,6 +1,8 @@
+# cmake . -G "Unix Makefiles"
+# make
+
 # CMake 最低版本号要求
 cmake_minimum_required (VERSION 2.8)
-
 # 项目信息
 project (main)
 
@@ -11,8 +13,9 @@ aux_source_directory(. DIR_SRCS)
 # 指定生成目标
 add_executable(main ${DIR_SRCS}) # 这样写是将查找到的所有源文件都生成
 
+# 添加头文件路径
 include_directories(./A)
-
+# 添加头文件路径
 include_directories(./B)
 
 # 添加 A 子目录
