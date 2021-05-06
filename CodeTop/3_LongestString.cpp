@@ -50,7 +50,7 @@ public:
         int left=0;
         for (int i = 0; i < s.size(); i++)
         {
-            while(noSam.find(s[i])!=noSam.end()){
+            while(noSam.find(s[i])!=noSam.end()){//while!!!! 多次填成if
                 noSam.erase(s[left]);
                 left++;
             }

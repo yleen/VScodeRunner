@@ -50,7 +50,7 @@ public:
 
         while (left < right)
         {
-            while (left < right && nums[left] < cur_val)
+            while (left < right && nums[left] < cur_val)//这里是While!!!多次写成if
             {
                 left++;
             }
@@ -66,12 +66,12 @@ public:
             }
         }
         if (nums[right] < cur_val)
-            left = end;                //特殊情况，当标志值比其他都大时  可能会产生left一直移动到right  第二个while没有执行，此时right指向的值还是小于标志值的。 此时将left设到end
+            left = end;                //特殊情况，当标志值比其他都大时  可能会产生left一直移动到right  第二个while没有执行。 此时直接将left设到end
         swap(nums[pivot], nums[left]); //这一步是把标志位从end回归到排序后确定的位置
         pivot = left;
         if (pivot == k)
             return nums[pivot];
-        return pivot > k ? quickFind(nums, start, left - 1, k) : quickFind(nums, left + 1, end, k);
+        return pivot > k ? quickFind(nums, start, pivot - 1, k) : quickFind(nums, pivot + 1, end, k);
     }
 };
 

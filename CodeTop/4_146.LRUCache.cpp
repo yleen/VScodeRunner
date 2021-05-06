@@ -52,7 +52,7 @@ public:
         if(memory.find(key)!=memory.end()){
             DoubleLinkList* node=updateStatus(key);
             node->value=value;
-            return;
+            return;//这里不要丢了！！
         }
         if(memory.size()==cacheCapacity){
             int topKey =head->next->key;
