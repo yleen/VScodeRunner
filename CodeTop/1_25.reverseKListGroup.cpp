@@ -38,7 +38,7 @@ public:
         for (int i = 0; i < k; i++)
         {
             if (kNode == nullptr)
-                return head;
+                return head;//如果为不足k个也反转则将此处改为break；
             kNode = kNode->next;
         }
 
@@ -64,7 +64,7 @@ public:
 // @lc code=end
 //参考：https://labuladong.gitbook.io/algo/shu-ju-jie-gou-xi-lie/shou-ba-shou-shua-lian-biao-ti-mu-xun-lian-di-gui-si-wei/k-ge-yi-zu-fan-zhuan-lian-biao
 
-//法二 迭代法
+//法二 迭代法 此方法不具有普适性 换一个
 class Solution2 {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
