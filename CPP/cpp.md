@@ -17,5 +17,6 @@
 # 使用cmake编译项目
 需要安装 CMake 和mingw
 1. 在该项目中创建CmakeLists.txt文件，与将要编译的项目平行。
-2. windows中直接执行`cmake . -G "Unix Makefiles"`。 //先执行`cmake .`,若没有生成`Makefile`文件，将CMakeCache.txt删除，并执行`cmake . -G "Unix Makefiles"`。
+2. windows中直接执行`cmake . -G "Unix Makefiles"`。 //先执行`cmake .`,若没有生成`Makefile`文件，将CMakeCache.txt删除，并执行`cmake . -G "Unix Makefiles"`。 
 3. 确定当前目录中生成了`Makefile`文件，执行`make`命令。
+4. 注意 若执行中报错则说明安装的环境有问题。
