@@ -13,13 +13,13 @@ public:
     int maxProfit(vector<int> &prices)
     {
         int minPrice = prices[0];
-        int maxPrice = 0;
+        int maxMoney = 0;
         for (int i = 0; i < prices.size(); i++)
         {
-            minPrice = minPrice > prices[i] ? prices[i] : minPrice;
-            maxPrice = max(maxPrice, prices[i] - minPrice);
+            minPrice=min(minPrice,prices[i]);
+            maxMoney=max(maxMoney,prices[i]-minPrice);
         }
-        return maxPrice;
+        return maxMoney;
     }
 };
 // @lc code=end

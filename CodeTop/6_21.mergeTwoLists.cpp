@@ -39,7 +39,7 @@ public:
             }
             head=head->next;
         }
-        if(l1!=nullptr) head->next=l1;
+        if(l1!=nullptr) head->next=l1; //注意这里使用if即可 若使用while纯属画蛇添足
         if(l2!=nullptr) head->next=l2;
         return retList->next;
     }

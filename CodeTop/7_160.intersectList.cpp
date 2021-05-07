@@ -36,7 +36,7 @@ public:
         ListNode *under=headB;
         while (top!=under)
         {
-            top=top==nullptr?headB:top->next;
+            top=top==nullptr?headB:top->next;//注意是top 而不是top->next 因为要是next就是死循环了
             under=under==nullptr?headA:under->next;
         }
         
