@@ -171,7 +171,7 @@ public:
             if (nums[i] > nums[0])
             {
                 swap(nums[0], nums[i]);
-                siftDown(nums, 0, k);
+                siftDown(nums, 0, k);//注意这个k
             }
         }
         // 结束后第k个大的数就是小根堆的堆顶
