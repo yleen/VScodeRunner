@@ -82,7 +82,7 @@ public:
     }
 };
 
-// 法二 并查集
+// 法二 并查集 https://labuladong.gitbook.io/algo/mu-lu-ye-1/mu-lu-ye-2/unionfind-suan-fa-xiang-jie
 class Solution
 {
 public:
@@ -116,9 +116,9 @@ public:
 class UnionFind
 {
 private:
-    vector<int> parent;
-    vector<int> size;
-    int count;
+    vector<int> parent;//存储父节点  根节点的父节点是他本身
+    vector<int> size;//记录树的长度  小一些的树接到大一些的树下面，这样就能避免头重脚轻，更平衡一些
+    int count;//连通分量的数量
 
 public:
     UnionFind(vector<vector<char>> &grid)
@@ -143,13 +143,15 @@ public:
             }
         }
     }
-
+    //连通两个节点
     void uninte(int x, int y)
     {
         int rootX = find(x);
         int rootY = find(y);
         if (rootX == rootY)
             return;
+        //将两棵树合并为一棵
+        //判断哪棵树长 短的接到长的下面
         if (size[rootX] > size[rootY])
         {
             parent[rootY] = rootX;
@@ -160,11 +162,12 @@ public:
             parent[rootX] = rootY;
             size[rootY] += size[rootX];
         }
-        count--;
+        count--;//连通分量减少
     }
-
+    //压缩树  使其长度保持固定  最终所有树高都不会超过 3（union的时候树高可能达到 3）。
     int find(int x)
     {
+        //一路找到根结点
         while (x != parent[x])
         {
             parent[x] = parent[parent[x]];
@@ -172,13 +175,14 @@ public:
         }
         return parent[x];
     }
-
+    //判断当前两个节点是否连通
     bool connected(int x, int y)
     {
         int rootX = find(x);
         int rootY = find(y);
         return rootX == rootY;
     }
+    //返回连通分量数量
     int getCount()
     {
         return count;
