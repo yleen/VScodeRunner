@@ -30,9 +30,9 @@ class Solution2:
 
         return newhead  
 
-def endString(s:string):
-    index=0
-    for i=0; i<s.length;i++:
-        if s[i]==" ":
-            index=i+1
-    return s.length-index
+    def endString(s:string)->int:
+        index=0
+        for i in s:
+            if s[i]==" ":
+                index=i+1
+        return s.length-index

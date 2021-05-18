@@ -13,7 +13,14 @@
     stack<int> sk2;
     sk.swap(sk2);//交换元素
 ```
+# long short int的区别
 
+int	        4bytes	-2147483648 to 2147483647
+short int	2bytes	-32768 to 32767
+long int	8bytes	-2,147,483,648 to 2,147,483,647
+
+short int 简写为short
+long int 简写为long
 # 使用cmake编译项目
 需要安装 CMake 和mingw
 1. 在该项目中创建CmakeLists.txt文件，与将要编译的项目平行。
