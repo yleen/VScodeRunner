@@ -2,26 +2,10 @@
 #include<cstdio>
 #include<cstring>
 #include<cmath>
-
+#include <complex>
 using namespace std;
-
+typedef std::complex<double> Complex;  // STL complex
 const double PI = acos(-1.0);
-struct Complex{
-	double x,y;
-	Complex(double _x = 0.0,double _y = 0.0){
-		x = _x;
-		y = _y;
-	}
-	Complex operator-(const Complex &b)const{
-		return Complex(x - b.x,y - b.y);
-	}
-	Complex operator+(const Complex &b)const{
-		return Complex(x + b.x,y + b.y);
-	}
-	Complex operator*(const Complex &b)const{
-		return Complex(x*b.x - y*b.y,x*b.y + y*b.x);
-	}
-};
 /*
 *进行FFT和IFFT前的反置变换 
 *位置i和i的二进制反转后的位置互换 
@@ -85,12 +69,6 @@ int main(){
 			x2[i] = Complex(0,0);
 		fft(x1,len);
 		fft(x2,len);
-		for(int i = 0;i < len;i++)
-			sum[i] = int(x1[i].x + 0.5);
-		while(sum[len] == 0&&len > 0)	len--;
-		for(int i = len;i >= 0;i--)
-			printf("%c",sum[i] + '0');
-		printf("\n");
 	}
 	return 0;
 }
