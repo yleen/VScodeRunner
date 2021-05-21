@@ -48,3 +48,8 @@ void sort(int[] nums, int lo, int hi) {
 }
 ```
 先对左右子数组排序，然后合并（类似合并有序链表的逻辑），你看这是不是二叉树的后序遍历框架？另外，这不就是传说中的分治算法嘛，不过如此呀。
+
+### 实践
+
+#### [226. 翻转二叉树](https://leetcode-cn.com/problems/invert-binary-tree/)
+
