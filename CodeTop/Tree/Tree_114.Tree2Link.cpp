@@ -82,6 +82,25 @@ public:
     }
 };
 
+//递归式
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        if(root==nullptr)
+            return;
+        flatten(root->left);
+        flatten(root->right);
+        TreeNode* left=root->left;
+        TreeNode* right=root->right;
+        root->left=nullptr;
+        root->right=left;
+        TreeNode* p=root;
+        while(p->right!=nullptr)
+            p=p->right;
+        p->right=right;
+    }
+};
+
 
 
 //此方法时间复杂度o(n) 空间复杂度o(1)最符合题意
