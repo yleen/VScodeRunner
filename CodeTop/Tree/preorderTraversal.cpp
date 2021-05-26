@@ -38,6 +38,24 @@ public:
         return treeNum;
     }
 };
+//此法较为简便
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> treeNum;
+        if(root==nullptr)
+            return treeNum;
+        stack<TreeNode*> skNode;
+        skNode.push(root);
+        while(!skNode.empty()){
+            TreeNode* node = skNode.top();skNode.pop();
+            treeNum.push_back(node->val);
+            if(node->right) skNode.push(node->right);
+            if(node->left)  skNode.push(node->left);
+        }
+        return treeNum;
+    }
+};
 
 //递归法
 class Solution {

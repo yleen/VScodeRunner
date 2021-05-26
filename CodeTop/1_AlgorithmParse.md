@@ -17,6 +17,73 @@
 ![image.png](https://i.loli.net/2021/05/18/HxFmXL3MfKCosue.png)
 
 对于第二点，你可以自己做个试验看下。我们用一个记录交换次数的变量，在代码中，每次交换的时候，我们就对这个变量加一，排序完成之后，这个变量的值就是总的数据交换次数。这样你就能很直观地理解我刚刚说的，堆排序比快速排序交换次数多。
+# 关于二叉树前序中序后序层序遍历使用的数据结构
+前中后都用栈 层序用队列
+前
+```C++
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> treeNum;
+        if(root==nullptr)
+            return treeNum;
+        stack<TreeNode*> skNode;
+        skNode.push(root);
+        while(!skNode.empty()){
+            TreeNode* node = skNode.top();skNode.pop();
+            treeNum.push_back(node->val);
+            if(node->right) skNode.push(node->right);
+            if(node->left)  skNode.push(node->left);
+        }
+        return treeNum;
+    }
+};
+```
+中
+```C++
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> treeNum;
+        if(root==nullptr)
+            return treeNum;
+        stack<TreeNode*> skNode;
+        while(!skNode.empty()||root!=nullptr){
+            while(root!=nullptr){
+                skNode.push(root);
+                root=root->left;
+            }
+            root=skNode.top();
+            treeNum.push_back(root->val);
+            skNode.pop();
+            root=root->right;
+        }
+        return treeNum;
+    }
+};
+```
+后
+```c++
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> treeNum;
+        if(root==nullptr)
+            return treeNum;
+        stack<TreeNode*> skNode;
+        skNode.push(root);
+        while(!skNode.empty()){
+            TreeNode* node=skNode.top();skNode.pop();
+            treeNum.push_back(node->val);
+            if(node->left)skNode.push(node->left);//注意与前序遍历的区别 此处先push left
+            if(node->right)skNode.push(node->right);
+        }
+        reverse(treeNum.begin(),treeNum.end());//最后要逆转
+        return treeNum;
+    }
+};
+```
+
 
 # 数据结构的存储方式
 

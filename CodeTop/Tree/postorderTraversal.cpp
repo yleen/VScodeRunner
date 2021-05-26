@@ -46,8 +46,25 @@ public:
 
     }
 };
-
-
+//迭代 此方法较为简便
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> treeNum;
+        if(root==nullptr)
+            return treeNum;
+        stack<TreeNode*> skNode;
+        skNode.push(root);
+        while(!skNode.empty()){
+            TreeNode* node=skNode.top();skNode.pop();
+            treeNum.push_back(node->val);
+            if(node->left)skNode.push(node->left);//注意与前序遍历的区别 此处先push left
+            if(node->right)skNode.push(node->right);
+        }
+        reverse(treeNum.begin(),treeNum.end());//最后要逆转
+        return treeNum;
+    }
+};
 
 
 
