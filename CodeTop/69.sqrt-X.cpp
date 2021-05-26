@@ -25,7 +25,8 @@ public:
 };
 
 //牛顿分析法 ？
-#include <algorithm>
+#include <math.h> //fabs
+using namespace std;
 class Solution {
 public:
     int mySqrt(int x) {

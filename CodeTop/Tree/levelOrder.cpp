@@ -32,9 +32,9 @@ struct TreeNode
 class Solution
 {
 public:
-    vector<vector<int>> levelOrder(TreeNode *root)
+    vector<vector<int> > levelOrder(TreeNode *root)
     {
-        vector<vector<int>> res;
+        vector<vector<int> > res;
         if (!root)
             return res;
         queue<TreeNode *> qTree;
@@ -72,8 +72,8 @@ public:
 //法二 加父节点
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> res;
+    vector<vector<int> > levelOrder(TreeNode* root) {
+        vector<vector<int> > res;
         if(!root)
         return res;
         queue<TreeNode*> qTree;

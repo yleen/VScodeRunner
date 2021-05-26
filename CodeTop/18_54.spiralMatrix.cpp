@@ -8,14 +8,15 @@
 #include<vector>
 using namespace std;
 class Solution {
+private:
     static constexpr int directions[4][2]={{0,1},{1,0},{0,-1},{-1,0}};
 public:
-    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+    vector<int> spiralOrder(vector<vector<int> >& matrix) {
         if (matrix.size() == 0 || matrix[0].size() == 0) {
             return {};
         }
         int rows = matrix.size(), columns = matrix[0].size();
-        vector<vector<bool>> visited(rows, vector<bool>(columns));
+        vector<vector<bool> > visited(rows, vector<bool>(columns));
         int row=0,column=0,directIndex=0;
         int size=matrix.size()*matrix[0].size();
         vector<int> res(size);
