@@ -268,6 +268,38 @@ https://zh.wikipedia.org/wiki/A%E6%90%9C%E5%B0%8B%E6%BC%94%E7%AE%97%E6%B3%95
 
 https://www.gamedev.net/reference/articles/article2003.asp
 
+# 向量相关
+## 向量点乘
+a . b
+点乘需要两个纬度相同的向量，然后让两个向量的纬度相互乘再把所有维度的积加起来。
+几何意义：点乘用于描述两个向量的相似度，如果点乘结果越大两个向量的方向越相似。
+点乘为了求角度
+a . b = |a|*|b|*cosα
+## 向量叉乘
+a X b
+叉乘的结果是一个垂直于这个向量的新向量。
+方向用右手法则判断
+$
+\begin{matrix}
+    x1\\
+    y1\\
+    z1
+\end{matrix}
+$ X $
+\begin{matrix}
+    x2\\
+    y2\\
+    z2
+\end{matrix}
+$ = $
+\begin{matrix}
+y1z2-z1y2\\
+z1x2-x1z2\\
+z1y2-y1x2
+\end{matrix}
+$
+几何意义：两个向量叉乘的结果是垂直于这两个向量的，起始就是为了求得两个向量的垂线，被标准化后为法线。
+
 # 斐波那契数列及其变形
 
 ## 斐波那契数列
@@ -329,9 +361,9 @@ public:
 class Solution {
 public:
     int climbStairs(int n) {
-		if(n==1||n==2)
-			return n;
-		return climbStairs(n-1)+climbStairs(n-2);
+        if(n==1||n==2)
+            return n;
+        return climbStairs(n-1)+climbStairs(n-2);
     }
 };
 ```
@@ -348,10 +380,10 @@ public:
 
     int fib(int n,vector<int>& rember){
         if(n==1||n==2)
-			return n;
+            return n;
         if(rember[n]==0)
             rember[n]=fib(n-1,rember)+fib(n-2,rember);
-		return rember[n];
+        return rember[n];
     }
 };
 ```
@@ -436,7 +468,7 @@ public:
     int climbStairs(int n) {
         if(n==1)
             return n;
-		return pow(2,n-1);
+        return pow(2,n-1);
     }
 };
 ```
@@ -449,15 +481,15 @@ public:
     int climbStairs(int n) {
         if(n==1||n==2)
             return n;
-		int dp[n];
-		dp[0]=1;
-		dp[1]=2;
-		for(int i=2;i<n;i++){
-			for(int j=0;j<i;j++){
-				dp[i]+=dp[j];
-			}
-		}
-		return dp[n-1];
+        int dp[n];
+        dp[0]=1;
+        dp[1]=2;
+        for(int i=2;i<n;i++){
+            for(int j=0;j<i;j++){
+                dp[i]+=dp[j];
+            }
+        }
+        return dp[n-1];
     }
 };
 ```
@@ -527,7 +559,7 @@ public:
     int climbStairs(int n) {
         if(n==1||n==2||n==3)
             return n;
-		int dp[n];
+        int dp[n];
         dp[0]=1;
         dp[1]=2;
         dp[2]=3;
@@ -560,7 +592,7 @@ public:
     int RectCover(int n) {
         if(n==1||n==2)
             return n;
-		int dp[n];
+        int dp[n];
         dp[0]=1;
         dp[1]=2;
         for(int i=2;i<n;i++){
