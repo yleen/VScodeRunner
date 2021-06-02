@@ -41,7 +41,7 @@ var d float32 = 12.1
 var e bool = true
 //简写
 var varName = value
-varName :=value
+varName :=value//此种声明只可以用于函数内，方法内
 //FE
 var b=1//自动确定类型
 c:=3

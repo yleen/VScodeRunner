@@ -1,8 +1,9 @@
 # 忽略生成的执行文件
 *.exe
-
+*.exec
 # 忽略test文件
 test.*
 *.test
 #忽略指定文件
 .DS_Store
+

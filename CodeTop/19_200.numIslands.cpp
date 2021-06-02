@@ -12,7 +12,7 @@ using namespace std;
 class Solution
 {
 public:
-    int numIslands(vector<vector<char>> &grid)
+    int numIslands(vector<vector<char> > &grid)
     {
         int rows = grid.size();
         int columns = grid[0].size();
@@ -32,7 +32,7 @@ public:
         return count;
     }
     //深度优先
-    void dfs(vector<vector<char>> &grid, int x, int y)
+    void dfs(vector<vector<char> > &grid, int x, int y)
     {
         grid[x][y] = '0';
         int rows = grid.size();
@@ -47,9 +47,9 @@ public:
             dfs(grid, x, y + 1);
     }
     //广度优先
-    void bfs(vector<vector<char>> &grid, int x, int y)
+    void bfs(vector<vector<char> > &grid, int x, int y)
     {
-        queue<pair<int, int>> neighbors;
+        queue<pair<int, int> > neighbors;
         int rows = grid.size();
         int columns = grid[0].size();
         neighbors.push({x, y});
@@ -86,7 +86,7 @@ public:
 class Solution
 {
 public:
-    int numIslands(vector<vector<char>> &grid)
+    int numIslands(vector<vector<char> > &grid)
     {
         int rows = grid.size();
         int columns = grid[0].size();
@@ -116,12 +116,12 @@ public:
 class UnionFind
 {
 private:
-    vector<int> parent;//存储父节点  根节点的父节点是他本身
-    vector<int> size;//记录树的长度  小一些的树接到大一些的树下面，这样就能避免头重脚轻，更平衡一些
-    int count;//连通分量的数量
+    vector<int> parent; //存储父节点  根节点的父节点是他本身
+    vector<int> size;   //记录树的长度  小一些的树接到大一些的树下面，这样就能避免头重脚轻，更平衡一些
+    int count;          //连通分量的数量
 
 public:
-    UnionFind(vector<vector<char>> &grid)
+    UnionFind(vector<vector<char> > &grid)
     {
         count = 0;
         int rows = grid.size();
@@ -162,7 +162,7 @@ public:
             parent[rootX] = rootY;
             size[rootY] += size[rootX];
         }
-        count--;//连通分量减少
+        count--; //连通分量减少
     }
     //压缩树  使其长度保持固定  最终所有树高都不会超过 3（union的时候树高可能达到 3）。
     int find(int x)
