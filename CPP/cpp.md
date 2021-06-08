@@ -14,7 +14,7 @@
     sk.swap(sk2);//交换元素
 ```
 
-# stack和class的区别
+# struct和class的区别
 在C++中struct得到了很大的扩充：
 
 1. struct可以包括成员函数
