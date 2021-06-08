@@ -2,7 +2,11 @@
 //运行 ./helloword
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+	"os"
+)
 
 func main() {
 	fmt.Printf("Hello world\n")
@@ -31,6 +35,10 @@ func main() {
 	opFunc := wrap("add")
 	re := opFunc(2, 3)
 	fmt.Printf("%d\n", re)
+
+	fmt.Printf("/*defer*/\n")
+	deferMethod()
+	deferMethod2()
 }
 
 //函数签名与匿名函数
@@ -74,4 +82,52 @@ func wrap(op string) func(int, int) int {
 	}
 }
 
-// todo:defer
+/*
+defer 关键字 注册多个延迟调用 先进后出顺序 在函数返回前被执行
+类似 finaly
+用于保证一些资源最终一定能得到回收和释放
+defer 后面必须是函数或方法
+*/
+func deferMethod() {
+	defer func() {
+		fmt.Println("first") //第三个
+	}()
+	defer func() {
+		fmt.Println("second") //第二个
+	}()
+	fmt.Println("function body") //第一个输出
+}
+func deferMethod2() {
+	i := 10
+	defer func(i int) {
+		fmt.Println("defer i=", i) //此处输出10
+	}(i)
+	i++
+	fmt.Println(i) //此处为11
+}
+func deferMethod3() {
+	i := 10
+	defer func(i int) {
+		fmt.Println("defer i=", i) //此处输出10
+	}(i)
+	i++
+	fmt.Println("主动调用os.Exit时defer不执行")
+	os.Exit(1)
+}
+
+//defer的实际应用
+//defer 可用来注册资源释放函数，防止忘记资源释放
+func CopyFile(dst, src string) (w int64, err error) {
+	newSrc, err := os.Open(src)
+	if err != nil {
+		return
+	}
+	defer newSrc.Close()
+	newDst, err := os.Open(dst)
+	if err != nil {
+		return
+	}
+	defer newDst.Close()
+	w, err = io.Copy(newDst, newSrc)
+	return
+}
