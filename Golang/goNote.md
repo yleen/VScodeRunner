@@ -1,4 +1,5 @@
-# 基本的源程序框架
+# 基本语法
+## 基本的源程序框架
 ```golang
 package xxxx
 
@@ -12,8 +13,8 @@ func xxx(){
 }
 ```
 
-# 变量 与常量
-## 变量声明
+## 变量 与常量
+### 变量声明
 **变量类型**
 
 ```golang
@@ -49,7 +50,7 @@ d:="this is go"//简写方式
 a,b := 1,"this is b"
 ```
 
-## 常量
+### 常量
 
 预声明标识符iota，初始值为0。一组常量同时声明时其值逐行增加，iota可以看作自增的枚举变量。
 
@@ -86,7 +87,7 @@ const x = iota //x=0
 const y = iota //y=0
 ```
 
-## 字符串
+### 字符串
 
 go中字符串string是以byte形式存储的
 
@@ -116,7 +117,7 @@ go中字符串string是以byte形式存储的
 ```
 转换成 `[]rune` 类型后，字符串中的每个字符，无论占多少个字节都用 int32 来表示，因而可以正确处理中文。
 
-### Println 与 Printf的区别
+#### Println 与 Printf的区别
 
 ```GO
 	a, b := 10, "go"
@@ -132,7 +133,7 @@ go中字符串string是以byte形式存储的
 
 
 
-### golang fmt格式“占位符”
+#### golang fmt格式“占位符”
 
 >```GO
 >普通占位符
@@ -158,9 +159,9 @@ go中字符串string是以byte形式存储的
 
 reference:https://golang.org/pkg/fmt/
 
-## 数组
+### 数组
 
-### 声明数组
+#### 声明数组
 
 ```GO
 	var arr1 [5]int    //一维[0 0 0 0 0]
@@ -197,7 +198,7 @@ reference:https://golang.org/pkg/fmt/
 	fmt.Println(sub3, combined)
 ```
 
-## 字典key-value
+### 字典key-value
 
 map 类似于 java 的 HashMap，Python的字典(dict)，是一种存储键值对(Key-Value)的数据解构。使用方式和其他语言几乎没有区别。
 
@@ -214,7 +215,7 @@ map 类似于 java 的 HashMap，Python的字典(dict)，是一种存储键值�
 	println(map2["Jarry"]) //3
 ```
 
-## 指针
+### 指针
 
 ```GO
 	str := "golang"
@@ -244,9 +245,11 @@ func fun2(num *int) {
 }
 ```
 
-# 流程控制语句
 
-## if
+
+## 流程控制语句
+
+### if
 
 ```GO
 	age := 18
@@ -262,7 +265,7 @@ func fun2(num *int) {
 	}
 ```
 
-## switch
+### switch
 
 ```GO
 	type Gender int8
@@ -300,7 +303,7 @@ func fun2(num *int) {
 	}//输出male unknown
 ```
 
-## for
+### for
 
 ```go
 	sum := 1
@@ -340,11 +343,11 @@ func fun2(num *int) {
 //TOFIND:在运行时发现map并不是按顺序便利的，好像是随机遍历？
 ```
 
-# 函数functions
+## 函数functions
 
 **模板**
 
-## 函数
+### 函数
 
 ```GO
 func funcName(param1 Type1, param2 Type2, ...) (return1 Type3, ...) {
@@ -383,7 +386,7 @@ func div(num1 int, num2 int) (quo int, rem int) {
 }
 ```
 
-## 错误处理
+### 错误处理
 
 如果函数实现过程中，如果出现不能处理的错误，可以返回给调用者处理。比如我们调用标准库函数`os.Open`读取文件，`os.Open` 有2个返回值，第一个是 `*File`，第二个是 `error`， 如果调用成功，error 的值是 nil，如果调用失败，例如文件不存在，我们可以通过 error 知道具体的错误信息。
 
@@ -428,9 +431,9 @@ func get(index int) (res int) {
 - 在 get 函数中，使用 defer 定义了异常处理的函数，在协程退出前，会执行完 defer 挂载的任务。因此如果触发了 panic，控制权就交给了 defer。
 - 在 defer 的处理逻辑中，使用 recover，使程序恢复正常，并且将返回值设置为 -1，在这里也可以不处理返回值，如果不处理返回值，返回值将被置为默认值 0。
 
-# 结构体 方法 和接口
+## 结构体 方法 和接口
 
-## struct 结构体
+### struct 结构体
 
 **结构体类似于其他语言中的 class**，可以在结构体中定义多个字段，为结构体实现方法，实例化等。接下来我们定义一个结构体 Student，并为 Student 添加 name，age 字段，并实现 `hello()` 方法。
 
@@ -459,7 +462,7 @@ func (stu *Student) hello(person string) {
 - 实现方法与实现函数的区别在于，`func` 和函数名`hello` 之间，加上该方法对应的实例名 `stu` 及其类型 `*Student`，可以通过实例名访问该实例的字段`name`和其他方法了。
 - 调用方法通过 `实例名.方法名(参数)` 的方式。
 
-## interfac 接口
+### interfac 接口
 
 一般而言，接口定义了一组方法的集合，接口不能被实例化，一个类型可以实现多个接口。
 
@@ -533,11 +536,11 @@ type Person interface {
 	fmt.Println(m)//map[age:18 name:Tom scores:[60 75 55 102 110]]
 ```
 
-# 并发编程
+## 并发编程
 
 Go 语言提供了 sync 和 channel 两种方式支持协程(goroutine)的并发.
 
-## sync
+### sync
 
 例如我们希望并发下载 N 个资源，多个并发协程之间不需要通信，那么就可以使用 sync.WaitGroup，等待所有并发协程执行结束。
 
@@ -573,7 +576,7 @@ Done!`
 
 串行需要 3s 的下载操作，并发后，只需要 1s。
 
-## channel
+### channel
 
 使用 channel 信道，可以在协程之间传递消息。阻塞等待并发协程返回消息。
 
@@ -607,7 +610,7 @@ Finish: www.abc.com
 Finish: www.abc.com
 Done!`
 
-# 单元测试(unit test)
+## 单元测试(unit test)
 
 假设我们希望测试 package main 下 `calc.go` 中的函数，要只需要新建 `calc_test.go` 文件，在`calc_test.go`中新建测试用例即可。
 
@@ -640,7 +643,7 @@ PASS
 ok      example 0.040s
 ```
 
-# 一些技巧
+## 一些技巧
 
 1. 对包名进行重新设置
 
@@ -653,7 +656,25 @@ func main() {
    fm.Println("hello, world")
 }
 ```
-
+# 常用关键字
+## defer
+defer 关键字 注册多个延迟调用 先进后出顺序 在函数返回前被执行
+类似 finaly
+用于保证一些资源最终一定能得到回收和释放,常被用于关闭文件描述符、关闭数据库连接以及解锁资源
+defer 后面必须是函数或方法
+defer 实现原理为延迟调用链表 当函数只有一个defer时会将结构体分配到栈上  多于一个时会分配到堆上
+## panic 和 recover
+panic 和 recover 用来处理Go的运行时错误  panic用来主动抛出错误，recover用来捕获panic抛出的错误
+函数签名如下
+```go
+panic(i interface{})
+recover()interface{}
+```
+panic 能够改变程序的控制流，`调用 panic 后会立刻停止执行当前函数的剩余代码`，并在当前 Goroutine 中递归执行调用方的 defer；
+recover 可以中止 panic 造成的程序崩溃。`它是一个只能在 defer 中发挥作用的函数`，在其他作用域中调用不会发挥作用；
+panic 只会触发当前 Goroutine 的 defer；
+recover 只有在 defer 中调用才会生效；
+panic 允许在 defer 中嵌套多次调用；
 # debug
 
 ## VSCode: Could not import Golang package
