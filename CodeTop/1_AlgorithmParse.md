@@ -17,6 +17,7 @@
 ![image.png](https://i.loli.net/2021/05/18/HxFmXL3MfKCosue.png)
 
 对于第二点，你可以自己做个试验看下。我们用一个记录交换次数的变量，在代码中，每次交换的时候，我们就对这个变量加一，排序完成之后，这个变量的值就是总的数据交换次数。这样你就能很直观地理解我刚刚说的，堆排序比快速排序交换次数多。
+
 # 关于二叉树前序中序后序层序遍历使用的数据结构
 前中后都用栈 层序用队列
 前
@@ -104,6 +105,13 @@ void traverse(TreeNode root) {
     // 后序遍历代码
 }
 ```
+
+# 时间复杂度
+[![image.png](https://i.postimg.cc/XY21Ygb9/image.png)](https://postimg.cc/bZt96kdv)
+
+[![image.png](https://i.postimg.cc/rsnRrzFZ/image.png)](https://postimg.cc/zHhfmzhT)
+
+[![image.png](https://i.postimg.cc/658yPWQw/image.png)](https://postimg.cc/8jVpJVWn)
 
 # 什么是 LRU 算法
 
