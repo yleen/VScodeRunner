@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=25 lang=cpp
  *
  * [25] K 个一组翻转链表
+ * https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
+ * [hard]
  */
 
 // @lc code=start

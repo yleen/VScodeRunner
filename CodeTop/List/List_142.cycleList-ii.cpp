@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=142 lang=cpp
  *
  * [142] 环形链表 II
+ * https://leetcode-cn.com/problems/linked-list-cycle-ii/
+ * [medium]
  */
 
 // @lc code=start

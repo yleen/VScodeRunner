@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=160 lang=cpp
  *
  * [160] 相交链表
+ * https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
+ * [easy]
  */
 
 // @lc code=start
