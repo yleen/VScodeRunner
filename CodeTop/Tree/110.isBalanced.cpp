@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=110 lang=cpp
  *
  * [110] 平衡二叉树
+ * https://leetcode-cn.com/problems/balanced-binary-tree/
+ * [easy]
  */
 
 // @lc code=start
