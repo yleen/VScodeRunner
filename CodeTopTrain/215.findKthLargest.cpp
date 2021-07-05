@@ -6,6 +6,7 @@
 
 // @lc code=start
 #include<vector>
+#include<time.h>
 using namespace std;
 class Solution {
 public:
