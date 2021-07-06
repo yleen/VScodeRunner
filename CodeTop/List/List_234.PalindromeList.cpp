@@ -52,7 +52,7 @@ public:
         ListNode *right = revertList(slow);
         while (right!=nullptr)//注意此处判定条件
         {
-            if (left != right)
+            if (left->val != right->val)
                 return false;
             left = left->next;
             right = right->next;
