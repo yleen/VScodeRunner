@@ -2,9 +2,12 @@
  * @lc app=leetcode.cn id=146 lang=cpp
  *
  * [146] LRU 缓存机制
+ * https://leetcode-cn.com/problems/lru-cache/
+ * [medium]
  */
 
 // @lc code=start
+#define NULL 0
 #include<unordered_map>
 
 using namespace std;
