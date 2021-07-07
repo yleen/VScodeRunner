@@ -20,4 +20,7 @@ public:
     }
 };
 // @lc code=end
-
+/*
+7.7
+方法不熟练，只会hash法
+*/

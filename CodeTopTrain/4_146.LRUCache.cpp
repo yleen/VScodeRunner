@@ -33,4 +33,6 @@ public:
  * obj->put(key,value);
  */
 // @lc code=end
-
+/* 
+写不出来，需练习
+*/
