@@ -37,9 +37,9 @@ public:
     vector<int> inorderTraversal(TreeNode* root) {
         
     }
-    vector<int> inorderEach(TreeNode* root,vector<int> eachList){
 
-    }
 };
 // @lc code=end
-
+/*
+不熟练 需联系
+*/
