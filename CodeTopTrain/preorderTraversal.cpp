@@ -1,8 +1,8 @@
 /*
- * @lc app=leetcode.cn id=94 lang=cpp
+ * @lc app=leetcode.cn id=144 lang=cpp
  *
- * [94] 二叉树的中序遍历
- * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
+ * [144] 二叉树的前序遍历
+ * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
  * [easy]
  */
 
@@ -34,10 +34,10 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> treeList;
+        
     }
 };
 // @lc code=end
-/*
-不熟练 需练习
-*/
+
