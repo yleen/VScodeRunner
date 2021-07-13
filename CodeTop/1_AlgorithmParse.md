@@ -612,3 +612,5 @@ public:
 ```
 # 并查集
 https://labuladong.gitbook.io/algo/mu-lu-ye-1/mu-lu-ye-2/unionfind-suan-fa-xiang-jie
+
+# MySQL
