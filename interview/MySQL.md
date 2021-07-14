@@ -119,3 +119,5 @@ MySQL索引按字段个数分类可分为：单列索引、联合索引（复合
 
 # MySQL存储引擎
 https://zhuanlan.zhihu.com/p/102147497
+
+# mysql 锁 隔离级别 事务 幻读 索引
