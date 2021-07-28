@@ -21,6 +21,8 @@ typedef struct Row
 * @param rows The rows, for example rows[0] is the first row.
 */
 #include <iostream>
+#include <algorithm> 
+#include <vector>
 using namespace std;
 // 任务1
 void task1(const Row *rows, int nrows)
@@ -97,6 +99,7 @@ void task1(const Row *rows, int nrows)
 */
     int left = 0;
     int right = nrows;
+    vector<Row> res;
     //二分法查找a
     while (left <= right)
     {
@@ -112,7 +115,8 @@ void task1(const Row *rows, int nrows)
                 const Row *leRows = rows + pLe;
                 if ((leRows->a == 1000 || leRows->a == 2000 || leRows->a == 3000) && leRows->b >= 10 && leRows->b < 50)
                 {
-                    cout << leRows->a << "," << leRows->b << endl;
+                    //cout << leRows->a << "," << leRows->b << endl;
+                    res.push_back(*leRows);
                     pLe--;
                 }
             }
@@ -122,10 +126,12 @@ void task1(const Row *rows, int nrows)
                 const Row *riRows = rows + pRi;
                 if ((riRows->a == 1000 || riRows->a == 2000 || riRows->a == 3000) && riRows->b >= 10 && riRows->b < 50)
                 {
-                    cout << riRows->a << "," << riRows->b << endl;
+                    // cout << riRows->a << "," << riRows->b << endl;
+                    res.push_back(*riRows);
                     pRi++;
                 }
             }
+            sort(res.begin(),res.end(),compare);
             return;
         }
         //没有定位到位置，重新定位
@@ -138,3 +144,12 @@ void task1(const Row *rows, int nrows)
         }
     }
 }
+
+bool compare(Row *a,Row *b){
+    return a->b<b->b;
+}
+
+//任务4
+/*
+使用b+树，叶子结点按照范围划分，既可以快速查找效率也快
+*/
