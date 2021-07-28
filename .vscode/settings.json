@@ -55,5 +55,6 @@
         "xhash": "cpp",
         "xtree": "cpp",
         "stdlib.h":"cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

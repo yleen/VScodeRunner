@@ -145,3 +145,9 @@ long int 简写为long
 2. windows中直接执行`cmake . -G "Unix Makefiles"`。 //先执行`cmake .`,若没有生成`Makefile`文件，将CMakeCache.txt删除，并执行`cmake . -G "Unix Makefiles"`。 
 3. 确定当前目录中生成了`Makefile`文件，执行`make`命令。
 4. 注意 若执行中报错则说明安装的环境有问题。
+# 关于指针的使用规范
+```cpp
+int *p
+int* p
+```
+在C语言中，我们这样把p声明为一个int类型的指针 int *p，而在C++中我们使用int* p     
