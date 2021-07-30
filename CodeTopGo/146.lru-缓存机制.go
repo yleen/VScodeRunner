@@ -37,7 +37,7 @@ func Constructor(capacity int) LRUCache {
 }
 
 func (this *LRUCache) Get(key int) int {
-	if _, ok := tihs.cache[key]; !ok {
+	if _, ok := this.cache[key]; !ok {
 		return -1
 	}
 	node := this.cache[key]
