@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=2 lang=cpp
  *
  * [2] 两数相加
+ * [medium]
+ * https://leetcode-cn.com/problems/add-two-numbers/
  */
 
 // @lc code=start

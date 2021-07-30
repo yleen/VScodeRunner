@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=200 lang=cpp
  *
  * [200] 岛屿数量
+ * [medium]
+ * https://leetcode-cn.com/problems/number-of-islands/
  */
 
 // @lc code=start

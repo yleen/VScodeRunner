@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=78 lang=cpp
  *
  * [78] 子集 全组合
+ * [medium]
+ * https://leetcode-cn.com/problems/subsets/
  */
 
 // @lc code=start

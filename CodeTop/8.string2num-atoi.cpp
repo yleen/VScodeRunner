@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=8 lang=cpp
  *
  * [8] 字符串转换整数 (atoi)
+ * [medium]
+ * https://leetcode-cn.com/problems/string-to-integer-atoi/
  */
 
 // @lc code=start

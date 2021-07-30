@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=47 lang=cpp
  *
  * [47] 全排列 II
+ * [medium]
+ * https://leetcode-cn.com/problems/permutations-ii/
  */
 
 // @lc code=start

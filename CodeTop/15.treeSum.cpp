@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=15 lang=cpp
  *
  * [15] 三数之和
+ * [medium]
+ * https://leetcode-cn.com/problems/3sum/
  */
 
 // @lc code=start

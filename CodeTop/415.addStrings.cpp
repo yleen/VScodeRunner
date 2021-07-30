@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=415 lang=cpp
  *
  * [415] 字符串相加
+ * [easy]
+ * https://leetcode-cn.com/problems/add-strings/
  */
 
 // @lc code=start

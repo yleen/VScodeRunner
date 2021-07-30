@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=300 lang=cpp
  *
  * [300] 最长递增子序列
+ * [medium]
+ * https://leetcode-cn.com/problems/longest-increasing-subsequence/
  */
 
 // @lc code=start

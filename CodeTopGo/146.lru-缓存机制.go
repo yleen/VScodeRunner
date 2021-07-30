@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+package main
+
 type DoubleLinkList struct {
 	key, value int
 	prev, next *DoubleLinkList
@@ -60,4 +62,3 @@ func (this *LRUCache) addToHead(node *DoubleLinkList) {
  * obj.Put(key,value);
  */
 // @lc code=end
-

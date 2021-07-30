@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=232 lang=cpp
  *
  * [232] 用栈实现队列
+ * [easy]
+ * https://leetcode-cn.com/problems/implement-queue-using-stacks/
  */
 /**
  * Your MyQueue object will be instantiated and called as such:

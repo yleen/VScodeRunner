@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=121 lang=cpp
  *
  * [121] 买卖股票的最佳时机
+ * [easy]
+ * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
  */
 
 // @lc code=start

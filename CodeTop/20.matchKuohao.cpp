@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=20 lang=cpp
  *
  * [20] 有效的括号
+ * [easy]
+ * https://leetcode-cn.com/problems/valid-parentheses/
  */
 
 // @lc code=start

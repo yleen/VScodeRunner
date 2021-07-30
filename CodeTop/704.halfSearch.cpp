@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=704 lang=cpp
  *
  * [704] 二分查找
+ * [easy]
+ * https://leetcode-cn.com/problems/binary-search/
  */
 
 // @lc code=start

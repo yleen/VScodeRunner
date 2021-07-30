@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=1 lang=cpp
  *
  * [1] 两数之和
+ * [easy]
+ * https://leetcode-cn.com/problems/two-sum/
  */
 
 // @lc code=start

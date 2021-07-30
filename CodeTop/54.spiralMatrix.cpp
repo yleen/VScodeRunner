@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=54 lang=cpp
  *
  * [54] 螺旋矩阵
+ * [medium]
+ * https://leetcode-cn.com/problems/spiral-matrix/
  */
 
 // @lc code=start

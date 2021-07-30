@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=88 lang=cpp
  *
  * [88] 合并两个有序数组
+ * [easy]
+ * https://leetcode-cn.com/problems/merge-sorted-array/
  */
 
 // @lc code=start

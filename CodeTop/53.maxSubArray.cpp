@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=53 lang=cpp
  *
  * [53] 最大子序和
+ * [easy]
+ * https://leetcode-cn.com/problems/maximum-subarray/
  */
 
 // @lc code=start
