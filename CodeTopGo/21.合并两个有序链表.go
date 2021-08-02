@@ -12,10 +12,12 @@
  *     Next *ListNode
  * }
  */
-// type ListNode struct {
-// 	Val  int
-// 	Next *ListNode
-// }
+package codetopgo
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	resList := &ListNode{}
@@ -40,4 +42,3 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 
 // @lc code=end
-

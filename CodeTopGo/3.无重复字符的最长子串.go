@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+package codetopgo
+
 func lengthOfLongestSubstring(s string) int {
 	strMap := map[byte]int{}
 	n := len(s)
@@ -29,4 +31,3 @@ func max(a int, b int) int {
 }
 
 // @lc code=end
-

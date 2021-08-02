@@ -12,6 +12,13 @@
  *     Next *ListNode
  * }
  */
+package codetopgo
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 func hasCycle(head *ListNode) bool {
 	fast := head
 	slow := head
@@ -26,4 +33,3 @@ func hasCycle(head *ListNode) bool {
 }
 
 // @lc code=end
-

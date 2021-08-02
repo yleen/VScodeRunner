@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-package main
+package codetopgo
 
 type DoubleLinkList struct {
 	key, value int
@@ -46,13 +46,44 @@ func (this *LRUCache) Get(key int) int {
 }
 
 func (this *LRUCache) Put(key int, value int) {
-
+	if _, ok := this.cache[key]; !ok {
+		node := initDdoubleLinkList(key, value)
+		this.cache[key] = node
+		this.addToHead(node)
+		this.size++
+		if this.size > this.capacity {
+			removed := this.removeTail()
+			delete(this.cache, removed.key)
+			this.size--
+		}
+	} else {
+		node := this.cache[key]
+		node.value = value
+		this.moveToHead(node)
+	}
 }
 
 func (this *LRUCache) addToHead(node *DoubleLinkList) {
 	node.prev = this.head
 	node.next = this.head.next
 	this.head.next.prev = node
+	this.head.next = node
+}
+
+func (this *LRUCache) removeHead(node *DoubleLinkList) {
+	node.prev.next = node.next
+	node.next.prev = node.prev
+}
+
+func (this *LRUCache) moveToHead(node *DoubleLinkList) {
+	this.removeHead(node)
+	this.addToHead(node)
+}
+
+func (this *LRUCache) removeTail() *DoubleLinkList {
+	node := this.tail.prev
+	this.removeHead(node)
+	return node
 }
 
 /**

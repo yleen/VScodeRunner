@@ -12,6 +12,13 @@
  *     Next *ListNode
  * }
  */
+package codetopgo
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 func reverseBetween(head *ListNode, left int, right int) *ListNode {
 	hair := &ListNode{}
 	hair.Next = head
@@ -42,4 +49,3 @@ func reverseList(start *ListNode, end *ListNode) *ListNode {
 }
 
 // @lc code=end
-

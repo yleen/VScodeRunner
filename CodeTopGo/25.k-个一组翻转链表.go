@@ -12,6 +12,14 @@
  *     Next *ListNode
  * }
  */
+
+package codetopgo
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	if head == nil {
 		return head
@@ -42,4 +50,3 @@ func reverseList(start *ListNode, end *ListNode) *ListNode {
 }
 
 // @lc code=end
-
