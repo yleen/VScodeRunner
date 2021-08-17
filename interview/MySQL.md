@@ -124,3 +124,18 @@ https://zhuanlan.zhihu.com/p/102147497
 
 # 一条mysql语句是如何执行的
 https://cloud.tencent.com/developer/article/1546724
+
+# 如何定位分析执行效率低的 SQL 语句 
+1. 通过慢查询日志 slow.log 定位执行效率低的SQL，但是只能查到执行完的 sql ,
+2. 使用 show processlist命令查看当前 Mysql 正在进行的线程，包括线程状态、是否锁表
+3. 通过 explain 分析低效 SQL 语句的执行计划
+4. 通过 show profile 分析低效 SQL 语句
+# 什么影响了MySQL性能( 非常重要)
+
+影响性能的几个方面
+
+服务器硬件。
+服务器系统(系统参数优化)。
+存储引擎。 MyISAM： 不支持事务，表级锁。 InnoDB: 支持事务，支持行级锁，事务 ACID。
+数据库参数配置。
+数据库结构设计和SQL语句。(重点优化)
