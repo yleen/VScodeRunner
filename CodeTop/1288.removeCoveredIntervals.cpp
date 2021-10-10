@@ -2,8 +2,8 @@
  * @lc app=leetcode.cn id=1288 lang=cpp
  *
  * [1288] 删除被覆盖区间
- * https://leetcode-cn.com/problems/remove-covered-intervals/
  * [easy]
+ * https://leetcode-cn.com/problems/remove-covered-intervals/
  */
 
 // @lc code=start

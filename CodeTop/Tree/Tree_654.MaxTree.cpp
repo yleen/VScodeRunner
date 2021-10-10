@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=654 lang=cpp
  *
  * [654] 最大二叉树
+ * [medium]
+ * https://leetcode-cn.com/problems/maximum-binary-tree/
  */
 
 // @lc code=start
