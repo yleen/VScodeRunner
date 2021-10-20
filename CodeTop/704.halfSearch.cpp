@@ -16,6 +16,7 @@ public:
         while (left<=right)
         {
             pivot=left+(right-left)/2;
+            //此处有一个问题 pivot可有两种方法求值，另一种为（left+right）/2 哪种比较好呢。 应该是上面这种，因为若right较大时不会溢出
             if(nums[pivot]==target) return pivot;
             if(nums[pivot]>target) {
                 right=pivot-1;
