@@ -49,8 +49,47 @@ func quickFind(nums []int, start int, end int, k int)int{
 	return -1
 }
 
-func swap(a int, b int, nums[]int){
+//大根堆
+func findKthLargest(nums []int, k int) int {
+	heapSize := len(nums)
+	length := len(nums)
+	buildMaxHeap(nums, heapSize)
+
+	for i := length - 1; i > length - k; i--{
+		swap(0, i, nums)
+		heapSize--
+		siftDownRecursive(nums, 0, heapSize)
+	}
+	return nums[0]
+}
+
+func buildMaxHeap(nums []int, heapSize int){
+	length := len(nums)
+	for i := length/2; i >= 0; i--{
+		siftDownRecursive(nums, i, heapSize)
+	}
+}
+
+func siftDownRecursive(nums []int, i int, heapSize int){
+	left := i * 2 + 1
+	right := i * 2 + 2
+	cur := i
+	if left < heapSize && nums[left] > nums[cur] {
+		cur = left
+	}
+	if right < heapSize && nums[right] > nums[cur] {
+		cur = right
+	}
+	if cur != i {
+		swap(cur, i, nums)
+		siftDownRecursive(nums, cur, heapSize)
+	}
+
+}
+
+func swap(a int, b int, nums []int){
 	nums[a],nums[b] = nums[b],nums[a]
 }
+
 // @lc code=end
 

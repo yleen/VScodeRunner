@@ -11,14 +11,6 @@
 #include<unordered_map>
 
 using namespace std;
-struct DoubleLinkList{
-    DoubleLinkList* pre;
-    DoubleLinkList* next;
-    int key;
-    int value;
-    DoubleLinkList(int key,int value):key(key),value(value),pre(NULL),next(NULL){};
-};
-
 
 struct DoubleLinkList{
     DoubleLinkList* prev;
