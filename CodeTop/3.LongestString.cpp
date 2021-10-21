@@ -27,8 +27,6 @@ public:
             }
             length=max(length,i-left+1);
             noSam.insert(s[i]);
-            
-            
         }
 
         return length;
