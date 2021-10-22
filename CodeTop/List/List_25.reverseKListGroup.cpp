@@ -71,39 +71,39 @@ public:
 class Solution2 {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        if(head==nullptr||head->next==nullptr){
+        if(head == nullptr || head -> next == nullptr){
             return head;
         }
-        ListNode* hair=new ListNode(0);
-        hair->next=head;
-        ListNode* prev=hair;
-        ListNode* kNode=hair;
-        while(kNode->next!=nullptr){
-            for (int i = 0; i < k&&kNode!=nullptr; i++)//若为不足k个也反转 则将KNode改为KNode->next
+        ListNode* hair = new ListNode(0);
+        hair->next = head;
+        ListNode* prev = hair;
+        ListNode* kNode = hair;
+        while(kNode->next != nullptr){
+            for (int i = 0; i < k && kNode != nullptr; i++)//若为不足k个也反转 则将KNode改为KNode->next
             {
-                kNode=kNode->next;
+                kNode = kNode->next;
             }
-            if(kNode==nullptr) break;
+            if(kNode == nullptr) break;
 
-            ListNode* next=kNode->next;
-            ListNode* start=prev->next;
-            kNode->next=nullptr;
-            prev->next=reverseList(start);
-            start->next=next;
-            prev=start;
-            kNode=prev;
+            ListNode* next = kNode->next;
+            ListNode* start = prev->next;
+            kNode->next = nullptr;
+            prev->next = reverseList(start);
+            start->next = next;
+            prev = start;
+            kNode = prev;
         }
         return hair->next;
     }
 
     ListNode* reverseList(ListNode* head){
-        ListNode* prev=nullptr;
-        ListNode* curr=head;
-        while(curr!=nullptr){
-            ListNode* next=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=next;
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        while(curr != nullptr){
+            ListNode* next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
         }
         return prev;
     }
@@ -119,40 +119,40 @@ public:
 class Solution2 {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        if(head==nullptr||head->next==nullptr){
+        if(head == nullptr || head->next == nullptr){
             return head;
         }
 
-        ListNode* hair=new ListNode(0);
-        ListNode* prev=hair;
-        hair->next=head;
-        while(head!=nullptr){
-            ListNode* kNode=prev;
-            for(int i=0;i<k;i++){
-                kNode=kNode->next;
-                if(kNode==nullptr){
+        ListNode* hair = new ListNode(0);
+        ListNode* prev = hair;
+        hair->next = head;
+        while(head != nullptr){
+            ListNode* kNode = prev;
+            for(int i = 0;i < k;i++){
+                kNode = kNode->next;
+                if(kNode == nullptr){
                     return hair->next;
                 }
             }
-            ListNode* next=kNode->next;
-            tie(head,kNode)=revertList(head,kNode);
-            prev->next=head;
-            kNode->next=next;
-            prev=kNode;
-            head=kNode->next;
+            ListNode* next = kNode->next;
+            tie(head,kNode) = revertList(head,kNode);
+            prev->next = head;
+            kNode->next = next;
+            prev = kNode;
+            head = kNode->next;
         }
         return hair->next;
     }
 
 
      pair<ListNode*, ListNode*> revertList(ListNode* first,ListNode* end){
-        ListNode* prev=end->next;//注意此处
-        ListNode* curr=first;
-        while(prev!=end){
-            ListNode* next=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=next;
+        ListNode* prev = end->next;//注意此处
+        ListNode* curr = first;
+        while(prev != end){
+            ListNode* next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
         }
         return {end,first};
     }
