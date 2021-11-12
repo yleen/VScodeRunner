@@ -9,38 +9,49 @@ import (
 )
 
 func main() {
-	fmt.Printf("Hello world\n")
+	// fmt.Printf("Hello world\n")
 
-	fmt.Printf("/*有名函数*/\n")
-	fmt.Printf("%T\n", add)
-	a := do(add, 1, 2) //函数名可当作相同参数函数类型形参
-	fmt.Println(a)
-	s := do(sub, 1, 2)
-	fmt.Println(s)
-	add(1, 2)
-	//有名的函数可直接赋值给变量
-	f := add
-	f(1, 2)
+	// fmt.Printf("/*有名函数*/\n")
+	// fmt.Printf("%T\n", add)
+	// a := do(add, 1, 2) //函数名可当作相同参数函数类型形参
+	// fmt.Println(a)
+	// s := do(sub, 1, 2)
+	// fmt.Println(s)
+	// add(1, 2)
+	// //有名的函数可直接赋值给变量
+	// f := add
+	// f(1, 2)
 
-	fmt.Printf("/*匿名函数*/\n")
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println(err)
-		}
-	}()
-	sum(1, 2)
-	doinput(func(x, y int) int {
-		return x + y
-	}, 1, 2)
-	opFunc := wrap("add")
-	re := opFunc(2, 3)
-	fmt.Printf("%d\n", re)
+	// fmt.Printf("/*匿名函数*/\n")
+	// defer func() {
+	// 	if err := recover(); err != nil {
+	// 		fmt.Println(err)
+	// 	}
+	// }()
+	// sum(1, 2)
+	// doinput(func(x, y int) int {
+	// 	return x + y
+	// }, 1, 2)
+	// opFunc := wrap("add")
+	// re := opFunc(2, 3)
+	// fmt.Printf("%d\n", re)
 
-	fmt.Printf("/*defer*/\n")
-	deferMethod()
-	deferMethod2()
+	// fmt.Printf("/*defer*/\n")
+	// deferMethod()
+	// deferMethod2()
+	s := []int{0,1}
+	test(s)
+	fmt.Println(s[0],cap(s))//9 2
+	s = append(s,2)
+	s[0] = 11
+	fmt.Println(s[0],cap(s))//9 4
 }
 
+func test(arr []int){
+	arr[0] = 9
+	arr = append(arr, 1) //因为append扩容设定了新地址 不指向原来的地址了 所以更改新arr不会对传入参数有影响
+	arr[0] = 10 
+}
 //函数签名与匿名函数
 
 /*有名函数*/

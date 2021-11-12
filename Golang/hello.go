@@ -1,15 +1,10 @@
-package main
+// package hello
 
-import (
-	"fmt"
-	"os"
-)
+// func  main()  {
+// 	s := []int{1,2}
+// 	fmt.Println(s[0])
+// }
 
-func main() {
-	var s, sep string
-	for i := 1; i < len(os.Args); i++ {
-		s += sep + os.Args[i]
-		sep = " "
-	}
-	fmt.Println(s)
-}
+// func test(arr []int)  {
+// 	arr[0] = 9
+// }
