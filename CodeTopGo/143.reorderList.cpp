@@ -38,31 +38,31 @@ public:
         right = reverseList(right);
 
         //这种合并方法 可以输出正确结果
-        // ListNode* temp1 = NULL;
-		// while(right != nullptr)
-		// {
-		// 	temp1 = right->next;
-		// 	right->next = left->next;
-		// 	left->next = right;
-		// 	left = left->next->next;
-		// 	right = temp1;
-		// }
+        ListNode* temp1 = NULL;
+		while(right != nullptr)
+		{
+			temp1 = right->next;
+			right->next = left->next;
+			left->next = right;
+			left = left->next->next;
+			right = temp1;
+		}
 
         //这种合并输出错误 是为什么
-        ListNode* newList = new ListNode(0);
-        ListNode* newHead = newList;
-        while (right != nullptr)
-        {
-            newHead->next = left;
-            newHead = newHead->next;
-            newHead->next = right;
-            newHead = newHead->next;
-            left = left->next;
-            right = right->next;
-        }
-        newHead->next = nullptr;
-        head->next = nullptr;
-        head->next = newList->next;
+        // ListNode* newList = new ListNode(0);
+        // ListNode* newHead = newList;
+        // while (right != nullptr)
+        // {
+        //     newHead->next = left;
+        //     newHead = newHead->next;
+        //     newHead->next = right;
+        //     newHead = newHead->next;
+        //     left = left->next;
+        //     right = right->next;
+        // }
+        // newHead->next = nullptr;
+        // head->next = nullptr;
+        // head->next = newList->next;
     }
     ListNode* reverseList(ListNode* start){
         ListNode* pre = nullptr;
