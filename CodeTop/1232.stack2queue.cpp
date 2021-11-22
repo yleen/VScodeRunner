@@ -69,9 +69,8 @@ public:
     /** Returns whether the queue is empty. */
     bool empty()
     {
-        return stackPop.empty()&&stackPush.empty();
+        return stackPop.empty() && stackPush.empty();
     }
 };
-
 
 // @lc code=end
