@@ -11,7 +11,7 @@
 #include <vector>
 
 using namespace std;
-
+//dp f(n+1) = max(f(n), 0) + a(n+1)
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
