@@ -2,8 +2,13 @@
 *.exe
 *.exec
 # 忽略test文件
-test.*
+# test.*
+# 忽略以test为拓展名的所有文件
 *.test
+# 忽略test开头的所有文件
+test*
 #忽略指定文件
 .DS_Store
+.vscode
+node_modules
 
