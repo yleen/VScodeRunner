@@ -16,11 +16,69 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+#include<unordered_map>
+#include<stack>
+using namespace std;
+//递归
+class Solution {
+private:
+        unordered_map<int, int> index;
+public:
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        int n = preorder.size();
+        for(int i = 0; i < n; i++){
+            index[inorder[i]] = i;
+        }
+        return reConstructBinaryTree(preorder, inorder, 0, n - 1, 0, n - 1);
+    }
+    TreeNode* reConstructBinaryTree(vector<int>& preorder, vector<int>& inorder, int preStart, int preEnd, int inStart, int inEnd){
+        if(preStart > preEnd || inStart > inEnd){
+            return nullptr;
+        }
+        TreeNode* root = new TreeNode(preorder[preStart]);
+        int in_index = index[preorder[preStart]];
+        root->left = reConstructBinaryTree(preorder, inorder, preStart + 1, preStart + in_index - inStart, inStart, in_index - 1);
+        root->right = reConstructBinaryTree(preorder, inorder, preStart + in_index - inStart + 1, preEnd, in_index + 1, inEnd);
+        return root;
+    }
+};
+//迭代
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-
+        if(!preorder.size()){
+            return nullptr;
+        }
+        stack<TreeNode*> sk;
+        TreeNode* root = new TreeNode(preorder[0]);
+        sk.push(root);
+        int in_index = 0;
+        for(int i = 1; i < preorder.size(); i++){
+            int node_val = preorder[i];
+            TreeNode* curr_node = sk.top();
+            if(inorder[in_index] != curr_node->val){
+                curr_node->left = new TreeNode(node_val);
+                sk.push(curr_node->left);
+            }else{
+                while (!sk.empty() && sk.top()->val == inorder[in_index])
+                {
+                    curr_node = sk.top();
+                    sk.pop();
+                    in_index++;
+                }
+                curr_node->right = new TreeNode(node_val);
+                sk.push(curr_node->right);
+            }
+        }
+        return root;
     }
 };
 // @lc code=end
-
