@@ -12,7 +12,6 @@
 class Solution {
 public:
     int rand10() {
-        
     }
 };
 // @lc code=end
