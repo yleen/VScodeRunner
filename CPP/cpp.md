@@ -150,5 +150,5 @@ long int 简写为long
 int *p
 int* p
 ```
-在C语言中，我们这样把p声明为一个int类型的指针 int *p，而在C++中我们使用int* p     
+在C语言中，我们这样把p声明为一个int类型的指针 int *p，而在C++中我们使用int* p     https://www.zhihu.com/question/52305847?rf=21136956
 ```
