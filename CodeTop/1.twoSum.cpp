@@ -13,17 +13,15 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int,int> hashTable;
-        for(int i=0;i<nums.size();i++){
-            int num1=nums[i];
-            int num2=target-num1;
-            if(hashTable.find(num2)!=hashTable.end()){
-                return {i,hashTable[num2]};
+        unordered_map<int, int> hashTable;
+        for(int i = 0; i < nums.size(); i++){
+            int deterNum = target - nums[i];
+            if(hashTable.find(deterNum) != hashTable.end()){
+                return {i, hashTable[deterNum]};
             }
-            hashTable[num1]=i;
+            hashTable[nums[i]] = i;
         }
         return {};
     }
 };
 // @lc code=end
-
