@@ -17,30 +17,30 @@ public:
     bool isValid(string s)
     {
         int len = s.size();
-        if (len % 2 != 0)
+        if(len % 2 != 0){
             return false;
+        }
         unordered_map<char, char> map = {
             {')', '('},
-            {'}', '{'},
-            {']', '['}};
+            {']', '['},
+            {'}', '{'}
+        };
         stack<char> sk;
-        for (char k : s)
-        {
-            if (map.count(k))
-            {
-                if (sk.empty() || sk.top() != map[k])
+        for(char k : s){
+            // if(map.count(k)){
+            if(map.find(k) != map.end()){
+                if(sk.empty() || sk.top() != map[k]){
                     return false;
+                }
                 sk.pop();
-            }
-            else
-            {
+            }else{
                 sk.push(k);
             }
         }
-
-        if (sk.empty())
+        if(sk.empty())
             return true;
         return false;
     }
 };
+
 // @lc code=end

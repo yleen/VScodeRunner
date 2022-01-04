@@ -7,6 +7,14 @@
  */
 
 // @lc code=start
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+    }
+};
+// @lc code=end
+
 #include<unordered_map>
 #include<vector>
 using namespace std;
@@ -24,4 +32,3 @@ public:
         return {};
     }
 };
-// @lc code=end

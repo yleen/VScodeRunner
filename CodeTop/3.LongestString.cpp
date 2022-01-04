@@ -7,31 +7,60 @@
  */
 
 // @lc code=start#include <vector>
+
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_set<char> unSame;
+        int left = 0;
+        int maxLen = 0;
+        for(int i = 0; i < s.size(); i++){
+            while (unSame.find(s[i]) != unSame.end())
+            {
+                unSame.erase(s[left]);
+                left++;
+            }
+            unSame.insert(s[i]);
+            maxLen = max(maxLen, i - left + 1);
+        }
+        return maxLen;
+    }
+};
+
+
+// @lc code=end
+
+
+
+
+
+
+
+
 #include<iostream>
 #include <map>
 #include <unordered_set>
 #include <unordered_map>
 using namespace std;
-
+#pragma region
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        unordered_set<char> noSam; //hashmap
-        int length=0;
-        int left=0;
-        for (int i = 0; i < s.size(); i++)
-        {
-            while(noSam.find(s[i])!=noSam.end()){//while!!!! 多次填成if
-                noSam.erase(s[left]);
+        unordered_set<char> unSame;
+        int left = 0;
+        int maxLen = 0;
+        for(int i = 0; i < s.size(); i++){
+            while (unSame.find(s[i]) != unSame.end())
+            {
+                unSame.erase(s[left]);
                 left++;
             }
-            length=max(length,i-left+1);
-            noSam.insert(s[i]);
+            unSame.insert(s[i]);
+            maxLen = max(maxLen, i - left + 1);
         }
-
-        return length;
-        
-    }   
+        return maxLen;
+    }
 };
 
 
@@ -40,41 +69,35 @@ public:
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        unordered_map<char,int> last;//hashmap
+        unordered_map<char, int> unSame;
 
-        int n=s.size();
-
-        int res=0;
-        int start=0;
-        for(int i=0;i<n;i++){
-            start=max(start,last[s[i]]);
-            res=max(res,i-start+1);
-            last[s[i]]=i+1;
+        int start = 0;
+        int n = s.size();
+        int maxLen = 0;
+        for(int i = 0; i < n; i++){
+            start = max(start, unSame[s[i]]);
+            maxLen = max(maxLen, i - start + 1);
+            unSame[s[i]] = i + 1;
         }
 
-        return res;
+        return maxLen;
     }
 };
 
-
+//直接使用数组记录 此改动使速度提升20%
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int last[128]={0};//直接使用数组记录 此改动使速度提升20%
-
-        int n=s.size();
-
-        int res=0;
-        int start=0;
-        for(int i=0;i<n;i++){
-            int index=s[i]+0;
-            start=max(start,last[index]);
-            res=max(res,i-start+1);
-            last[index]=i+1;
+        int unSame[128] = {0};
+        int n = s.size();
+        int start = 0;
+        int maxLen = 0;
+        for(int i = 0; i < n; i++){
+            start = max(start, unSame[s[i] + 0]);
+            maxLen = max(maxLen, i - start + 1);
+            unSame[s[i] + 0] = i + 1;
         }
-
-        return res;
+        return maxLen;
     }
 };
-// @lc code=end
-
+#pragma endregion

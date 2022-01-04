@@ -50,7 +50,6 @@ public:
                 right--;
             }
         }
-
         return capcity;
     }
 };

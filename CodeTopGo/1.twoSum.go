@@ -8,26 +8,25 @@
 // 暴力解法
 func twoSum(nums []int, target int) []int {
 	for i,_ := range nums{
-		for j := i+1;j < len(nums);j++{
+		for j := i + 1; j < len(nums); j++{
 			if nums[i] + nums[j] == target{
-				return []int {i,j}
+				return []int{i, j}
 			}
 		}
 	}
-    return nil
+	return nil
 }
 //hash
 func twoSum(nums []int, target int) []int {
 	hashTable := make(map[int]int)
-	for i,v := range nums {
+	for i, v := range nums{
 		a := v
-		b := target -a
-		if va,ok := m[b]; ok{
-			return []int {i,va}
+		b := target - a
+		if va, ok := m[b]; ok{
+			return []int {i, va}
 		}
 		hashTable[a] = i
 	}
 	return nil
 }
 // @lc code=end
-

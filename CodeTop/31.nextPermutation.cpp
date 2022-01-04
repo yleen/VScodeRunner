@@ -2,15 +2,19 @@
  * @lc app=leetcode.cn id=31 lang=cpp
  *
  * [31] 下一个排列
+ * https://leetcode-cn.com/problems/next-permutation/
+ * [Medium]
+ * ???????
  */
 
 // @lc code=start
+//图反了 https://zhuanlan.zhihu.com/p/45007701
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
         int i = nums.size() - 1;
         int j = nums.size() - 1;
-
+        
         while (i > 0 && nums[i] <= nums[i - 1])
         {
             i--;
@@ -25,7 +29,6 @@ public:
         }
         reverse(nums, i + 1);
     }
-
     void reverse(vector<int>& nums, int start){
         int i = start;
         int j = nums.size() - 1;
@@ -38,4 +41,3 @@ public:
     }
 };
 // @lc code=end
-

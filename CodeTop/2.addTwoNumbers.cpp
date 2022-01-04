@@ -17,39 +17,48 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-struct ListNode
-{
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-class Solution
+
+class solution
 {
 public:
-    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+    listnode *addtwonumbers(listnode *l1, listnode *l2)
     {
-        ListNode *sumList = new ListNode(0);
-        ListNode *head = sumList;
-        int add = 0, sum = 0;
+
+    }
+};
+// @lc code=end
+struct listnode
+{
+    int val;
+    listnode *next;
+    listnode() : val(0), next(nullptr) {}
+    listnode(int x) : val(x), next(nullptr) {}
+    listnode(int x, listnode *next) : val(x), next(next) {}
+};
+#pragma region
+class solution
+{
+public:
+    listnode *addtwonumbers(listnode *l1, listnode *l2)
+    {
+        listnode* sumlist = new listnode(0);
+        listnode* head = sumlist;
+        int add = 0;
         while (l1 != nullptr || l2 != nullptr || add != 0)
         {
-            if (l1 != nullptr)
-            {
+            if(l1 != nullptr){
                 add += l1->val;
                 l1 = l1->next;
             }
-            if (l2 != nullptr)
-            {
+            if(l2 != nullptr){
                 add += l2->val;
                 l2 = l2->next;
             }
-            sumList->next = new ListNode(add % 10);
-            sumList = sumList->next;
+            sumlist->next = new listnode(add % 10);
             add = add / 10;
+            sumlist = sumlist->next;
         }
         return head->next;
     }
 };
-// @lc code=end
+#pragma endregion
