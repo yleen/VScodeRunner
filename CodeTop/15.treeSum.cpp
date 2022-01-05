@@ -7,6 +7,15 @@
  */
 
 // @lc code=start
+class Solution
+{
+public:
+    vector<vector<int>> threeSum(vector<int> &nums)
+    {
+    }
+};
+
+// @lc code=end
 
 #include <iostream>
 #include <vector>
@@ -49,4 +58,3 @@ public:
         return sumList;
     }
 };
-// @lc code=end

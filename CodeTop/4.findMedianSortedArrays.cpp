@@ -10,7 +10,28 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        
+        int len = nums1.size() + nums2.size();
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        int val = 0;
+        int preVal = 0;
+        while (k <= len / 2)
+        {
+            preVal = val;
+            if(i < nums1.size() && (nums1[i] < nums2[j] || y >= nums2.size())){
+                val = nums1[i++];
+            }else{
+                val = nums2[j++];
+            }
+            k++;
+        }
+        if(len % 2 == 0){
+            return (val + preVal) / 2.0;
+        }else{
+            return val;
+        }
+
     }
 };
 

@@ -7,6 +7,41 @@
  */
 
 // @lc code=start
+class Solution
+{
+    bool MaxInt(long long num){
+        return num > INT_MAX || num < INT_MIN;
+    }
+public:
+    int myAtoi(string s)
+    {
+        int i = 0;
+        int len = s.size();
+        int signal = 1;
+        while (s[i] == ' ' && i < len)
+        {
+            i++;
+        }
+        if(s[i] == '-'){
+            signal = -1;
+            i++;
+        }else if(s[i] == '+'){
+            i++;
+        }
+        long long atoi = 0;
+        while(i < len && isdigit(s[i])){
+            atoi = atoi * 10 + s[i] - '0';
+            if(MaxInt(atoi * signal)){
+                return signal == 1 ? INT_MAX : INT_MIN;
+            }
+            i++;
+        }
+        return (int)atoi * signal;
+    }
+};
+// @lc code=end
+
+
 #define INT_MAX 2147483648
 #define INT_MIN -2147483648
 #include <string>
@@ -45,4 +80,3 @@ public:
         return (int)atoi * signal;
     }
 };
-// @lc code=end
