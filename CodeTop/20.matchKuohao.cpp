@@ -7,6 +7,39 @@
  */
 
 // @lc code=start
+class Solution
+{
+public:
+    bool isValid(string s)
+    {
+        unordered_map<char, char> match{
+            {')','('},
+            {']','['},
+            {'}','{'}
+        };
+        if(s.size() % 2 != 0){
+            return false;
+        }
+        stack<char> sk;
+        for(int i = 0; i < s.size(); i++){
+            if(match.find(s[i]) != match.end()){
+                if(!sk.empty() && match[s[i]] == sk.top()){
+                    sk.pop();
+                }else{
+                    return false;
+                }
+            }else{
+                sk.push(s[i]);
+            }
+        }
+        if(sk.empty()){
+            return true;
+        }
+        return false;
+    }
+};
+// @lc code=end
+
 #include <iostream>
 #include <unordered_map>
 #include <stack>
@@ -42,5 +75,3 @@ public:
         return false;
     }
 };
-
-// @lc code=end
