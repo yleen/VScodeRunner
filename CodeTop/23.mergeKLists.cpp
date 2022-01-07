@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=23 lang=cpp
  *
  * [23] 合并K个升序链表
+ * https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/
+ * [Hard]
  */
 
 // @lc code=start
@@ -15,6 +17,63 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        ListNode* newList = new ListNode(0);
+        ListNode* head = newList;
+        int heapSize = lists.size();
+        if(heapSize == 0){
+            return nullptr;
+        }
+        for(int i = 0; i < heapSize;){
+            if(lists[i] == nullptr){
+                swap(lists[i], lists[heapSize - 1]);
+                heapSize--;
+                lists.pop_back();
+            }else{
+                i++;
+            }
+        }
+        buildMinHeap(lists, heapSize);
+        while (heapSize > 0)
+        {
+            head->next = lists[0];
+            head = head->next;
+            lists[0] = lists[0]->next;
+            if(!lists[0]){
+                heapSize--;
+                swap(lists[0], lists[heapSize]);
+            }
+            siftDownRecursive(lists, 0, heapSize);
+        }
+        return newList->next;
+    }
+    void buildMinHeap(vector<ListNode*>& lists, int heapSize){
+        int length = lists.size();
+        for(int i = length / 2; i >= 0; i--){
+            if(lists[i]){
+                siftDownRecursive(lists, i, heapSize);
+            }
+        }
+    }
+    void siftDownRecursive(vector<ListNode*>& lists, int i, int heapSize){
+        int left = i * 2 + 1;
+        int right = i * 2 + 2;
+        int cur = i;
+        if(left < heapSize && lists[cur]->val > lists[left]->val){
+            cur = left;
+        }
+        if(right < heapSize && lists[cur]->val > lists[right]->val){
+            cur = right;
+        }
+        if(cur != i){
+            swap(lists[cur], lists[i]);
+            siftDownRecursive(lists, cur, heapSize);
+        }
+    }
+};
+// @lc code=end
 #include<vector>
 #include<queue>
 using namespace std;
@@ -76,7 +135,7 @@ public:
             return nullptr;
         }
         int mid = (left + right) >> 1;
-        return mergeTwoList(merge(lists, left, mid), merge(lists, mid + 1, right));
+        return mergeTwoList(merge(lists, left, mid), merge(lists, mid + 1, right));//注意是mid 不是mid - 1
     }
 
     ListNode* mergeTwoList(ListNode* list1, ListNode* list2){
@@ -190,4 +249,3 @@ public:
         return head.next;
     }
 };
-// @lc code=end

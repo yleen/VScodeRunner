@@ -17,6 +17,15 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+class Solution
+{
+public:
+    ListNode *reverseKGroupRecur(ListNode *head, int k)
+    {
+    }
+};
+// @lc code=end
+//参考：https://labuladong.gitbook.io/algo/shu-ju-jie-gou-xi-lie/shou-ba-shou-shua-lian-biao-ti-mu-xun-lian-di-gui-si-wei/k-ge-yi-zu-fan-zhuan-lian-biao
 struct ListNode
 {
     int val;
@@ -63,9 +72,6 @@ public:
         return prevNode;
     }
 };
-// @lc code=end
-//参考：https://labuladong.gitbook.io/algo/shu-ju-jie-gou-xi-lie/shou-ba-shou-shua-lian-biao-ti-mu-xun-lian-di-gui-si-wei/k-ge-yi-zu-fan-zhuan-lian-biao
-
 
 //迭代法
 class Solution2 {
