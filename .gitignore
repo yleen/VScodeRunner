@@ -9,6 +9,5 @@
 test*
 #忽略指定文件
 .DS_Store
-.vscode
 node_modules
-
+.vscode
