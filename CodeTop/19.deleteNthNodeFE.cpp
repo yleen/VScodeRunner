@@ -17,6 +17,32 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+class Solution
+{
+public:
+    ListNode *removeNthFromEnd(ListNode *head, int n)
+    {
+        
+        ListNode* hair = new ListNode(0);
+        hair->next = head;
+        ListNode* fast = head;
+        ListNode* slow = hair;
+
+        for(int i = 0; i < n; i++){
+            fast = fast->next;
+        }
+        while (fast != nullptr)
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        ListNode* next = slow->next;
+        slow->next = slow->next->next;
+        next->next = nullptr;
+        return hair->next;
+    }
+};
+// @lc code=end
 struct ListNode
 {
     int val;
@@ -30,7 +56,7 @@ class Solution
 public:
     ListNode *removeNthFromEnd(ListNode *head, int n)
     {
-        ListNode *hair = new ListNode(0);
+        ListNode *hair = new ListNode(0);//注意为什么要使用一个结点来指向这个链表呢 ，测试用例中具有删除后空结点的情况，若不用这个指向返回的还是单个节点head
         hair->next = head;
         ListNode *fast = head;
         ListNode *slow = hair;
@@ -49,4 +75,3 @@ public:
         return hair->next;
     }
 };
-// @lc code=end

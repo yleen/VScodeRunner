@@ -16,11 +16,13 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// @lc code=end
+
 #include<vector>
 #include<queue>
 #include<unordered_map>
 using namespace std;
-/*
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -74,7 +76,7 @@ public:
         return pathSums;
     }
 };
-*/
+
 //dfs
 class Solution {
 private:
@@ -107,4 +109,3 @@ public:
         path.pop_back();//注意如果path是全局变量的话需要及时清空
     }
 };
-// @lc code=end
