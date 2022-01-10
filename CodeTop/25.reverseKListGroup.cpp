@@ -20,8 +20,41 @@
 class Solution
 {
 public:
-    ListNode *reverseKGroupRecur(ListNode *head, int k)
+    ListNode* reverseKGroupRecur(ListNode* head, int k)
     {
+        ListNode* hair = new ListNode(0);
+        hair->next = head;
+        ListNode* kNode = hair;
+        ListNode* prev = hair;
+        while (kNode != nullptr)
+        {
+            for(int i = 0; i < k && kNode != nullptr; i++){
+                kNode = kNode->next;
+            }
+            if(kNode == nullptr){
+                break;
+            }
+            ListNode* next = kNode->next;
+            kNode->next = nullptr;
+            ListNode* start = prev->next;
+            kNode->next = reverseList(start);
+            start->next = next;
+            prev = start;
+            kNode = prev;
+        }
+        
+    }
+    ListNode* reverseList(ListNode* start){
+        ListNode* prev = nullptr;
+        ListNode* curr = start;
+        while (curr != nullptr)
+        {
+            ListNode* next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
     }
 };
 // @lc code=end

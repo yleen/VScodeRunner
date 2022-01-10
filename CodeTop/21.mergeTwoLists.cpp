@@ -17,7 +17,6 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-//迭代
 class Solution
 {
 public:
