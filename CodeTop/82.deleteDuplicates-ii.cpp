@@ -15,6 +15,31 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode* searchNode = new ListNode(0);
+        ListNode* newHead = searchNode;
+        searchNode->next = head;
+        while (searchNode->next != nullptr && searchNode->next->next != nullptr)
+        {
+            if(searchNode->next->val == searchNode->next->next->val){
+                int sameVal = searchNode->next->val;
+                while (searchNode->next != nullptr && searchNode->next->val == sameVal)
+                {
+                    ListNode* next = searchNode->next;
+                    searchNode->next = searchNode->next->next;
+                }
+            }
+            else{
+                searchNode = searchNode->next;
+            }
+        }
+        return newHead->next;
+    }
+};
+// @lc code=end
+
 struct ListNode {
     int val;
     ListNode *next;
@@ -47,4 +72,3 @@ public:
         return newHead->next;
     }
 };
-// @lc code=end

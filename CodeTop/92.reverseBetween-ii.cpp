@@ -17,6 +17,30 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if(left == 1){
+            return reverseList(head, right);
+        }
+        head->next = reverseBetween(head->next, left - 1, right - 1);
+        return head;
+    }
+
+    ListNode* successor = nullptr;
+    ListNode* reverseList(ListNode* head,int index){
+        if(index == 1){
+            successor = head->next;
+            return head;
+        }
+        ListNode* newList = reverseList(head->next,index - 1);
+        head->next->next = head;
+        head->next = successor;
+        return newList;
+    }
+};
+// @lc code=end
+
 
 struct ListNode
 {
@@ -26,6 +50,7 @@ struct ListNode
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+//递归
 class Solution
 {
 public:
@@ -53,24 +78,23 @@ public:
         return listNode;//
     }
 };
-// @lc code=end
+//迭代
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
-        ListNode* Hair=new ListNode(-1);
-        Hair->next=head;
-
-        ListNode* start=Hair;
-        for(int i=0;i<left-1;i++){
-            start=start->next;
+        ListNode* hair=new ListNode(-1);
+        hair->next=head;
+        ListNode* start = Hair;
+        ListNode* end = head;
+        for(int i = 0; i < left - 1; i++){
+            start = start->next;
+            end = end->next;
         }
-        ListNode* end=start->next;
-        for(int j=left;j<=right;j++){
-            end=end->next;
+        for(int j = left; j <= right; j++){
+            end = end->next;
         }
-        ListNode* newList=reverseList(start->next,end);
-        start->next=newList;
-        return Hair->next;
+        start->next = reverseList(start->next,end);
+        return hair->next;
     }
 
     ListNode* reverseList(ListNode* start,ListNode* end){
