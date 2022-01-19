@@ -18,6 +18,45 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+class Solution
+{
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode *root)
+    {
+        vector<vector<int>> treeList;
+        if(root == nullptr){
+            return treeList;
+        }
+        queue<TreeNode*> qTree;
+        qTree.push(root);
+        bool isLeft = false;
+        while (!qTree.empty())
+        {
+            deque<int> tier;
+            int size = qTree.size();
+            while (size > 0)
+            {
+                size--;
+                TreeNode* node = qTree.front();qTree.pop();
+                if(isLeft){
+                    tier.push_front(node->val);
+                }else{
+                    tier.push_back(node->val);
+                }
+                if(node->left){
+                    qTree.push(node->left);
+                }
+                if(node->right){
+                    qTree.push(node->right);
+                }
+            }
+            treeList.emplace_back(vector<int>{tier.begin(), tier.end()});
+            isLeft = !isLeft;
+        }
+        return treeList;
+    }
+};
+// @lc code=end
 struct TreeNode
 {
     int val;
@@ -65,4 +104,3 @@ public:
         return res;
     }
 };
-// @lc code=end

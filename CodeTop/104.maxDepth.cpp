@@ -16,6 +16,35 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(root == nullptr){
+            return 0;
+        }
+        queue<TreeNode*> qTree;
+        qTree.push(root);
+        int deepSize = 0;
+        while (!qTree.empty())
+        {
+            int size = qTree.size();
+            while (size > 0)
+            {
+                size--;
+                TreeNode* node = qTree.front();qTree.pop();
+                if(node->left){
+                    qTree.push(node->left);
+                }
+                if(node->right){
+                    qTree.push(node->right);
+                }
+            }
+            deepSize++;
+        }
+        return deepSize;
+    }
+};
+// @lc code=end
 struct TreeNode {
       int val;
       TreeNode *left;
@@ -69,5 +98,3 @@ public:
         return deepSize;
     }
 };
-// @lc code=end
-
