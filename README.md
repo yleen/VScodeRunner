@@ -1,10 +1,4 @@
-精通各种语言的Hello World(bushi
-# win
-需要安装minw
-
-# mac
-需要配置语言环境
-
-# gitpush
-
-自动提交项目到git
+# 关于本项目
+我有一个梦想，就是精通各种语言的Hello World(bushi
+# 关于本项目（重来
+本项目是一些笔记、练习题和小的项目的集合，其中CodeTop是算法题练习。
