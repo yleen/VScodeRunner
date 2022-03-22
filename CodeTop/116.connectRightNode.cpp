@@ -22,6 +22,13 @@ public:
         : val(_val), left(_left), right(_right), next(_next) {}
 };
 */
+class Solution {
+public:
+    Node* connect(Node* root) {
+    }
+};
+// @lc code=end
+
 #define NULL 0
 class Node {
 public:
@@ -128,5 +135,3 @@ public:
         dfs(node->right);
     }
 };
-// @lc code=end
-

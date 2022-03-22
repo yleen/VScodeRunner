@@ -66,7 +66,7 @@ public:
         
     }
     //快速排序
-        void quickSort(vector<int>& nums,int start,int end){
+    void quickSort(vector<int>& nums,int start,int end){
         if(start >= end){
             return;
         }

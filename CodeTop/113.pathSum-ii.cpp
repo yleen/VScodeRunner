@@ -2,6 +2,9 @@
  * @lc app=leetcode.cn id=113 lang=cpp
  *
  * [113] 路径总和 II
+ * [Medium]
+ * https://leetcode-cn.com/problems/path-sum-ii/
+ * 给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
  */
 
 // @lc code=start
@@ -16,7 +19,35 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
+class Solution {
+private:
+    vector<vector<int>> pathSums;
+    vector<int> path;
+public:
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        if(root == nullptr){
+            return pathSums;
+        }
+        dfs(root, targetSum);
+        return pathSums;
+    }
+    void dfs(TreeNode* root, int targetSum){
+        targetSum -= root->val;
+        path.push_back(root->val);
+        if(root->left == nullptr && root->right == nullptr){
+            if(targetSum == 0){
+                pathSums.push_back(path);
+            }
+        }
+        if(root->left){
+            dfs(root->left, targetSum);
+        }
+        if(root->right){
+            dfs(root->right, targetSum);
+        }
+        path.pop_back();
+    }
+};
 // @lc code=end
 
 #include<vector>
@@ -31,7 +62,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-//层序遍历 bfs
+//层序遍历 bfs //TOTrain
 class Solution {
 private:
     unordered_map<TreeNode*,TreeNode*> parent;

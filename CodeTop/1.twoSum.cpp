@@ -10,7 +10,15 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-
+        unordered_map<int,int> same;
+        for(int i = 0; i < nums.size(); i++){
+            int curr = target - nums[i];
+            if(same.find(curr) != same.end()){
+                return {i, same[curr]};
+            }
+            same[nums[i]] = i;
+        }
+        return {};
     }
 };
 // @lc code=end
