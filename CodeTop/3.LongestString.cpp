@@ -21,7 +21,7 @@ public:
                 unSame.erase(s[left]);
                 left++;
             }
-            int maxLen = max(maxLen, i - left + 1);
+            maxLen = max(maxLen, i - left + 1);
             unSame.insert(s[i]);
         }
         return maxLen;
