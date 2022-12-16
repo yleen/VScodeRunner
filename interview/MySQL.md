@@ -32,12 +32,14 @@ B+tree 是MySQL中被存储引擎采用最多的索引类型。B+tree 中的 B �
 ### B+tree 与 B-tree
 B-tree 中的每个节点根据实际情况可以包含多条数据信息和子节点，如下图所示为一个3阶的B-tree：
 ![image.png](https://i.loli.net/2021/07/13/gdi5EQnJDp68TBN.png)
+
 **相对于B-tree，B+tree有以下两点不同：**
 B+tree 非叶子节点只存储键值信息， 数据记录都存放在叶子节点中。而B-tree的非叶子节点也存储数据。所以B+tree单个节点的数据量更小，在相同的磁盘I/O次数下，能查询更多的节点。
 B+tree 所有叶子节点之间都采用单链表连接。适合MySQL中常见的基于范围的顺序检索场景，而B-tree无法做到这一点。
 ![image.png](https://i.loli.net/2021/07/13/iXqLnUEp42dFaAy.png)
 ### B+tree 与 红黑树
 ![image.png](https://i.loli.net/2021/07/13/TOv32trNpFGWm94.png)
+
 红黑树是一种弱平衡二叉查找树。通过对任何一条从根到叶子的路径上各个节点着色的方式的限制，红黑树确保没有一条路径会比其他路径长出两倍。
 
 对于有N个叶子结点的 B+tree，其搜索复杂度为 `O(logdN)` ，其中 d(degree) 为 B+tree 的度，表示节点允许的最大子节点个数为d个，在实际应用当中，d值一般是大于100的，即使数据量达到千万级别时B+tree的高度依然维持在3-4左右，保证了3-4次磁盘I/O操作就能查询到目标数据。
